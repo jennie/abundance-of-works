@@ -86,38 +86,20 @@ export default {
     return {
       title: "Support Black Communities",
       meta: [
-        { name: "twitter:card", content: "summary_large_image" },
+        { key: "title", name: "description", content: "" },
+        { key: "description", name: "description", content: "" },
+        { key: "twitter:card", name: "twitter:card", content: "" },
+        { key: "twitter:image", name: "twitter:image", content: "" },
+        { key: "twitter:site", name: "twitter:site", content: "" },
+        { key: "twitter:title", name: "twitter:title", content: "" },
         {
-          name: "twitter:image",
-          content: `${
-            this.$page.metadata.siteUrl
-          }/images/black-communities.png`,
-        },
-        { name: "twitter:site", content: "@DMGToronto" },
-        {
-          name: "twitter:title",
-          content: "Support Black Communities",
-        },
-        {
+          key: "twitter:description",
           name: "twitter:description",
-          content:
-            "Funds, donation opportunities, businesses, events, and individuals non-Black people can support.",
+          content: "",
         },
-        {
-          name: "og:title",
-          content: "links and Opportunities for DMG Members",
-        },
-        {
-          name: "og:description",
-          content:
-            "Funds, donation opportunities, businesses, events, and individuals non-Black people can support.",
-        },
-        {
-          name: "og:image",
-          content: `${
-            this.$page.metadata.siteUrl
-          }/images/black-communities.png`,
-        },
+        { key: "og:title", name: "og:title", content: "" },
+        { key: "og:description", name: "og:description", content: "" },
+        { key: "og:image", name: "og:image", content: "" },
       ],
     };
   },
