@@ -2,39 +2,61 @@
   <Layout>
     <div class="container-inner mx-auto py-16">
       <div class="">
-                <h1 class="text-3xl font-bold leading-tight">
-{{$page.work.title}}
-</h1>
-        <!-- <div
-          v-for="work in $page.allWork.edges"
-          :key="work.id"
-          class="my-2 py-2 border-b"
-        >
-          <h2 class="text-2xl">
-            <a :href="work.node.URL" target="_blank">{{ work.node.title }}</a>
-          </h2>
-          <p class="font-bold">
-            {{ work.node.year }}
-          </p>
+        <h1 class="text-3xl font-bold leading-tight">
+          {{ $page.work.title }}
+        </h1>
+
+        <p class="font-bold" v-if="$page.work.year[0]">
+          <g-link :to="$page.work.year[0].path">{{
+            $page.work.year[0].name
+          }}</g-link>
+        </p>
+        <div v-if="$page.work.creators" class="creators mt-2">
+          {{ $page.work.creators.length > 1 ? "Creators" : "Creator" }}
+          <span
+            v-for="creator in $page.work.creators"
+            :key="creator.id"
+            class="px-2 py-1 mr-4"
+          >
+            <g-link :to="creator.path">
+              {{ creator.name }}
+            </g-link>
+          </span>
+        </div>
+
+        <div v-if="$page.work.tags" class="publishers mt-2">
+          <span
+            v-for="tag in $page.work.tags"
+            :key="tag.id"
+            class="tag bg-blue-200 rounded-full px-2 py-1 mr-4 hover:bg-blue-400 no-underline "
+          >
+            <g-link :to="tag.path">
+              {{ tag.name }}
+            </g-link>
+          </span>
+        </div>
+
+        <div v-if="$page.work.producers.length > 0" class="producers mt-2">
+          {{ $page.work.producers.length > 1 ? "Producers" : "Producer" }}
 
           <span
-            v-for="creator in work.node.creators"
-            :key="creator.id"
-            class="tag bg-gray-200 rounded-full px-2 py-1 mr-4 hover:bg-gray-400 no-underline "
+            v-for="producer in $page.work.producers"
+            :key="producer.id"
+            class="tag bg-red-200 rounded-full px-2 py-1 mr-4 hover:bg-red-400 no-underline "
           >
-            {{ creator.name }}
-          </span> -->
+            {{ producer.name }}
+          </span>
+        </div>
+        <div v-if="$page.work.publishers.length > 0" class="publishers mt-2">
+          {{ $page.work.publishers.length > 1 ? "Publishers" : "Publisher" }}
 
-          <!-- <h1 class="text-4xl font-bold leading-tight">{{ $page.post.title }}</h1>
-        <div class="flex my-8 text-sm">
-          <g-link
-            :to="tag.path"
-            v-for="tag in $page.post.tags"
-            :key="tag.id"
-            class="tag bg-gray-200 rounded-full px-4 py-2 mr-4 hover:bg-gray-400 no-underline uppercase "
-            >{{ tag.title }}</g-link
+          <span
+            v-for="publisher in $page.work.publishers"
+            :key="publisher.id"
+            class="tag bg-blue-200 rounded-full px-2 py-1 mr-4 hover:bg-blue-400 no-underline "
           >
-        </div> -->
+            {{ publisher.name }}
+          </span>
         </div>
       </div>
     </div>
@@ -44,7 +66,30 @@
 <page-query>
 query ($id: ID) {
   work(id: $id) {
+    id
+    path
     title
+    year {
+      name
+      path
+    }
+    tags {
+      name
+      path
+    }
+    creators {
+      name
+      type
+      path
+    }
+    publishers {
+      name
+      path
+    }
+    producers {
+      name
+      path
+    }        
   }
 }
 

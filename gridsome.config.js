@@ -37,23 +37,61 @@ module.exports = {
                 fieldName: "Publishers",
                 typeName: "Publisher",
               },
+              {
+                fieldName: "Year",
+                typeName: "Year",
+              },
             ],
           },
           {
             name: "Creators",
             typeName: "Creator",
+            links: [
+              {
+                fieldName: "Works",
+                typeName: "Work",
+              },
+            ],
           },
           {
             name: "Producers",
             typeName: "Producer",
+            links: [
+              {
+                fieldName: "Works",
+                typeName: "Work",
+              },
+            ],
           },
           {
             name: "Publishers",
             typeName: "Publisher",
+            links: [
+              {
+                fieldName: "Works",
+                typeName: "Work",
+              },
+            ],
           },
           {
             name: "Tags",
             typeName: "Tag",
+            links: [
+              {
+                fieldName: "Works",
+                typeName: "Work",
+              },
+            ],
+          },
+          {
+            name: "Years",
+            typeName: "Year",
+            links: [
+              {
+                fieldName: "Works",
+                typeName: "Work",
+              },
+            ],
           },
         ],
         tableName: "Works",
@@ -62,6 +100,11 @@ module.exports = {
   ],
   templates: {
     Work: "/work/:Title",
+    Creator: "/creator/:Name",
+    Tag: "/tag/:Name",
+    Producer: "/producer/:Name",
+    Publisher: "/publisher/:Name",
+    Year: "/year/:Name",
   },
   transformers: {
     remark: {

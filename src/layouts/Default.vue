@@ -21,39 +21,15 @@
         </div>
       </nav>
     </header>
-
-    <main class="flex-grow">
-      <slot />
-    </main>
+    <transition name="fade" appear>
+      <main class="flex-grow">
+        <slot />
+      </main>
+    </transition>
     <footer class="bg-red-700 text-white">
       <div
         class="container mx-auto flex flex-col lg:flex-row items-center justify-between py-8"
-      >
-        <div class="mb-8 lg:mb-0">
-          <div class="flex justify-center align-middle">
-            <a
-              class="mr-6"
-              rel="license"
-              href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
-              ><img
-                alt="Creative Commons Licence"
-                style="border-width:0"
-                src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/></a
-            ><br />
-            <div>
-              This work is licensed by Dames Making Games under a
-              <a
-                class="text-white hover:text-white"
-                rel="license"
-                href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
-                >Creative Commons Attribution-NonCommercial-ShareAlike 4.0
-                International License</a
-              >
-            </div>
-            .
-          </div>
-        </div>
-      </div>
+      ></div>
     </footer>
   </div>
 </template>
@@ -66,13 +42,21 @@ query {
   }
 }
 </static-query>
+<style>
+.fade-enter-active {
+  transition: opacity 0.5s;
+}
 
+.fade-enter {
+  opacity: 0;
+}
+</style>
 <script>
-import DmgLogo from "../components/DmgLogo";
+// import DmgLogo from "../components/DmgLogo";
 
 export default {
   components: {
-    DmgLogo,
+    // DmgLogo,
   },
 
   data() {
@@ -87,15 +71,5 @@ export default {
   },
 };
 </script>
-<style lang="postcss">
-.btn {
-  @apply font-bold py-2 px-4 rounded;
-}
-.btn-red {
-  @apply bg-red-500 text-white;
-}
-.btn-red:hover {
-  @apply bg-red-700 text-white;
-}
-</style>
+
 <style src="../css/main.css" />
