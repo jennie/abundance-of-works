@@ -1,0 +1,9 @@
+[build]
+  publish = "dist"
+  command = "gridsome build"
+[dev]
+  publish = "dist"
+  command = "gridsome develop"
+
+[[plugins]]
+package = "netlify-plugin-checklinks"
