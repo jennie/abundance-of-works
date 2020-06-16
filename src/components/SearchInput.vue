@@ -49,15 +49,24 @@
       >
         <div class="flex flex-col" ref="results">
           <a
-            v-for="(post, index) in results"
+            v-for="(result, index) in results"
             :key="index"
-            :href="post.item.URL"
+            :href="result.item.path"
             @click="reset"
             class="search-result"
             :class="{ 'search-highlighted': index === highlightedIndex }"
           >
-            <span class="title">{{ post.item.Name }}</span>
-            <span class="summary">{{ post.item.Notes }}</span>
+            <div class="flex justify-between">
+              <div class="text-gray-700">
+                {{ result.item.title }}
+              </div>
+
+              <div
+                class="text-gray-600 text-center uppercase text-sm font-normal"
+              >
+                {{ result.item.type }}
+              </div>
+            </div>
           </a>
 
           <div
@@ -77,35 +86,62 @@
 </template>
 
 <static-query>
-  {
-    metadata{
-      pathPrefix
+  query Search {
+    allWork  {
+      edges {
+        node {
+          id
+          path
+          title
+        }
+      }
+    }
+    allCreator {
+      edges {
+        node {
+          name
+          path
+        }
+      }
     }
   }
 </static-query>
 
 <script>
-import axios from "axios";
 import SearchFocus from "./SearchFocus";
 
 export default {
   components: {
     SearchFocus,
   },
-  created() {
-    axios("/search.json")
-      .then((response) => {
-        this.resourcesc19 = response.data;
-      })
-      .catch((error) => {
-        console.log(error);
+  computed: {
+    pages() {
+      let result = [];
+      const allWorks = this.$static.allWork.edges.map((edge) => edge.node);
+      allWorks.forEach((page) => {
+        result.push({
+          path: page.path,
+          title: page.title,
+          type: "work",
+        });
       });
+      const allCreators = this.$static.allCreator.edges.map(
+        (edge) => edge.node
+      );
+      allCreators.forEach((page) => {
+        result.push({
+          path: page.path,
+          title: page.name,
+          type: "creator",
+        });
+      });
+      return result;
+    },
   },
   data() {
     return {
       query: "",
       results: [],
-      resourcesc19: [],
       highlightedIndex: 0,
       searchResultsVisible: false,
       options: {
@@ -116,7 +152,7 @@ export default {
         distance: 500,
         maxPatternLength: 32,
         minMatchCharLength: 3,
-        keys: ["Name", "Notes"],
+        keys: ["title"],
       },
     };
   },
@@ -130,11 +166,9 @@ export default {
       this.searchResultsVisible = true;
     },
     performSearch() {
-      this.$search(this.query, this.resourcesc19, this.options).then(
-        (results) => {
-          this.results = results;
-        }
-      );
+      this.$search(this.query, this.pages, this.options).then((results) => {
+        this.results = results;
+      });
     },
     highlightPrev() {
       if (this.highlightedIndex > 0) {
