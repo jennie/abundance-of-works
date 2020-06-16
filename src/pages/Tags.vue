@@ -1,26 +1,45 @@
 <template>
   <Layout>
     <div class="container-inner mx-auto py-16">
-      <div class=""></div>
+      <div class="">
+        <div
+          v-for="tag in $page.allTag.edges"
+          :key="tag.id"
+          class="my-2 py-2 border-b"
+        >
+          <h2 class="text-2xl">
+            <g-link :to="tag.node.path">{{ tag.node.name }}</g-link>
+          </h2>
+        </div>
+      </div>
     </div>
   </Layout>
 </template>
 
-<style lang="postcss">
-main {
-  .post-link {
-    @apply text-gray-800 font-normal leading-normal;
+<page-query>
+query {
+  metadata {
+    siteName
+    siteUrl
   }
-  .source a:not(.btn) {
-    @apply text-gray-800 font-normal leading-normal;
+  allTag(sortBy: "Name", order:DESC) {
+    edges {
+      node {
+        name
+        path
+      }
+    }
   }
 }
-</style>
+
+
+</page-query>
+
 <script>
 export default {
   metaInfo() {
     return {
-      title: "Abundance of Works",
+      title: "Abundance of Works.",
       meta: [
         { key: "title", name: "description", content: "" },
         { key: "description", name: "description", content: "" },

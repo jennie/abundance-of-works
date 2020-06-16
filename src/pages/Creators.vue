@@ -1,21 +1,47 @@
 <template>
   <Layout>
     <div class="container-inner mx-auto py-16">
-      <div class=""></div>
+      <div class="">
+        <div
+          v-for="creator in $page.allCreator.edges"
+          :key="creator.id"
+          class="my-2 py-2 border-b"
+        >
+          <h2 class="text-2xl">
+            <g-link :to="creator.node.path">{{ creator.node.name }}</g-link>
+          </h2>
+        </div>
+      </div>
     </div>
   </Layout>
 </template>
 
-<style lang="postcss">
-main {
-  .post-link {
-    @apply text-gray-800 font-normal leading-normal;
+<page-query>
+query {
+  metadata {
+    siteName
+    siteUrl
   }
-  .source a:not(.btn) {
-    @apply text-gray-800 font-normal leading-normal;
+  allCreator {
+    edges {
+      node {
+        name
+        path
+        works {
+          title
+          path
+          year {
+            name
+          }
+        }
+      }
+    }
   }
 }
-</style>
+
+
+</page-query>
+
 <script>
 export default {
   metaInfo() {

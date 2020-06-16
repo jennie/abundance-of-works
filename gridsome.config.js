@@ -1,6 +1,7 @@
 const postcssNested = require("postcss-nested");
 const tailwind = require("tailwindcss");
 const postcssPlugins = [tailwind(), postcssNested];
+const postcssPlugins = [tailwind(), postcssNested];
 require("dotenv").config();
 
 module.exports = {

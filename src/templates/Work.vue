@@ -2,21 +2,23 @@
   <Layout>
     <div class="container-inner mx-auto py-16">
       <div class="">
-        <h1 class="text-3xl font-bold leading-tight">
-          {{ $page.work.title }}
-        </h1>
+        <div class="title flex justify-between">
+          <h1 class="text-3xl font-bold leading-tight">
+            {{ $page.work.title }}
+          </h1>
 
-        <p class="font-bold" v-if="$page.work.year[0]">
-          <g-link :to="$page.work.year[0].path">{{
-            $page.work.year[0].name
-          }}</g-link>
-        </p>
+          <span class="font-bold text-xl" v-if="$page.work.year[0]">
+            <g-link :to="$page.work.year[0].path">{{
+              $page.work.year[0].name
+            }}</g-link>
+          </span>
+        </div>
         <div v-if="$page.work.creators" class="creators mt-2">
           {{ $page.work.creators.length > 1 ? "Creators" : "Creator" }}
           <span
             v-for="creator in $page.work.creators"
             :key="creator.id"
-            class="px-2 py-1 mr-4"
+            class="px-2 py-1 mr-4 text-2xl"
           >
             <g-link :to="creator.path">
               {{ creator.name }}
@@ -24,13 +26,13 @@
           </span>
         </div>
 
-        <div v-if="$page.work.tags" class="publishers mt-2">
+        <div v-if="$page.work.tags" class="publishers my-6">
           <span
             v-for="tag in $page.work.tags"
             :key="tag.id"
-            class="tag bg-blue-200 rounded-full px-2 py-1 mr-4 hover:bg-blue-400 no-underline "
+            class="tag bg-gray-200 rounded-full px-2 py-1 mr-4 hover:bg-blue-400 no-underline text-black no-underline"
           >
-            <g-link :to="tag.path">
+            <g-link :to="tag.path" class=" text-black no-underline">
               {{ tag.name }}
             </g-link>
           </span>

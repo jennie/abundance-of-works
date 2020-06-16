@@ -6,11 +6,13 @@
           {{ $page.creator.name }}
         </h1>
 
-        <div v-for="work in $page.creator.works" :key="work.id">
-          <g-link :to="work.path">
-            {{ work.title }}
-          </g-link>
-        </div>
+        <ul v-for="work in $page.creator.works" :key="work.id">
+          <li class="text-xl">
+            <g-link :to="work.path">
+              {{ work.title }}
+            </g-link>
+          </li>
+        </ul>
       </div>
     </div>
   </Layout>
