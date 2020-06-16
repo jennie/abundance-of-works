@@ -2,10 +2,19 @@
   <Layout>
     <div class="container-inner mx-auto py-16">
       <div class="divide-y divide-gray-400">
-        <div v-for="work in $page.allWork.edges" :key="work.id" class="py-4">
-          <h2 class="text-2xl">
-            <g-link :to="work.node.path">{{ work.node.title }}</g-link>
-          </h2>
+        <div v-for="work in $page.allWork.edges" :key="work.id">
+          <g-link :to="work.node.path" class="py-4 flex items-baseline">
+            <span class="text-2xl text-left">{{ work.node.title }}</span>
+
+            <div class="text-base text-right font-normal ml-4">
+              <template v-for="(value, index) in work.node.creators">
+                <template v-if="index > 0"
+                  >,
+                </template>
+                <span :key="index">{{ value.name }}</span>
+              </template>
+            </div>
+          </g-link>
         </div>
 
         <pagination-posts
@@ -74,6 +83,7 @@ export default {
   components: {
     PaginationPosts,
   },
+
   metaInfo() {
     return {
       title: "Abundance of Works",
