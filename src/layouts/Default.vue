@@ -40,18 +40,6 @@
           </ul>
         </nav>
       </div>
-      <nav
-        class="container mx-auto flex flex-wrap items-center py-8 justify-center  lg:hidden"
-      >
-        <div class="block te text-center justify-center">
-          <button
-            @click="toggle"
-            class="flex items-center px-3 py-2 border rounded border-gray-500 hover:text-gray-600 hover:border-gray-600"
-          >
-            Menu
-          </button>
-        </div>
-      </nav>
     </header>
     <transition name="fade" appear>
       <main class="flex-grow">
