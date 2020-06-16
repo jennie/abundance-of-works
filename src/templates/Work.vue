@@ -21,8 +21,7 @@
             }}</g-link>
           </span>
         </div>
-
-        <div v-if="$page.work.creators" class="creators mt-2">
+        <div v-if="$page.work.creators.length > 0" class="creators mt-2">
           <div
             class="text-xl uppercase tracking-wide te text-gray-600 border-t-2 mt-6 mb-3 pt-2"
           >
