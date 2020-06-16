@@ -4,6 +4,3 @@
 [dev]
   publish = "dist"
   command = "gridsome develop"
-
-[[plugins]]
-package = "netlify-plugin-checklinks"
