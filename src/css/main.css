@@ -31,13 +31,13 @@ h4 {
 }
 
 main {
-  a:not(.btn) {
-    @apply text-red-700 underline;
+  /* a:not(.btn) {
+    @apply text-gray-700 underline;
   }
 
   a:hover:not(.btn) {
-    @apply text-red-800;
-  }
+    @apply text-black;
+  } */
 
   p {
     @apply mb-3;
@@ -49,11 +49,11 @@ main {
 }
 
 a {
-  @apply text-red-700 font-bold;
+  @apply text-gray-700 font-bold;
 }
 
 a:hover {
-  @apply text-red-800;
+  @apply text-black;
 }
 
 nav .active--exact {
