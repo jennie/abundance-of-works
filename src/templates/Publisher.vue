@@ -7,9 +7,11 @@
         </h1>
 
         <div v-for="work in $page.publisher.works" :key="work.id">
-          <g-link :to="work.path">
-            {{ work.title }}
-          </g-link>
+          <div class="text-2xl">
+            <g-link :to="work.path">
+              {{ work.title }}
+            </g-link>
+          </div>
         </div>
       </div>
     </div>

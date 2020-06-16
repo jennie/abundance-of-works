@@ -5,14 +5,15 @@
         <h1 class="text-3xl font-bold leading-tight">
           {{ $page.creator.name }}
         </h1>
-
-        <ul v-for="work in $page.creator.works" :key="work.id">
-          <li class="text-xl">
-            <g-link :to="work.path">
-              {{ work.title }}
-            </g-link>
-          </li>
-        </ul>
+        <div class="divide-y divide-gray-400">
+          <ul v-for="work in $page.creator.works" :key="work.id">
+            <li class="text-xl py-4">
+              <g-link :to="work.path">
+                {{ work.title }}
+              </g-link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </Layout>

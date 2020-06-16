@@ -1,28 +1,37 @@
 <template>
   <Layout>
     <div class="container-inner mx-auto py-16">
-      <div class="">
-        <div
-          v-for="year in $page.allYear.edges"
-          :key="year.id"
-          class="my-2 py-2 border-b"
-        >
+      <div class="divide-y divide-gray-400">
+        <div v-for="year in $page.allYear.edges" :key="year.id" class="py-4">
           <h2 class="text-2xl">
             <g-link :to="year.node.path">{{ year.node.name }}</g-link>
           </h2>
         </div>
       </div>
+
+      <pagination-posts
+        class="pt-8"
+        v-if="$page.allYear.pageInfo.totalPages > 1"
+        base="/years"
+        :totalPages="$page.allYear.pageInfo.totalPages"
+        :currentPage="$page.allYear.pageInfo.currentPage"
+      />
     </div>
   </Layout>
 </template>
 
 <page-query>
-query {
+query ($page: Int)  {
   metadata {
     siteName
     siteUrl
   }
-  allYear(sortBy: "Name", order:DESC) {
+  allYear(sortBy: "Name", order: DESC, perPage: 10, page: $page) @paginate {
+    totalCount
+    pageInfo {
+      totalPages
+      currentPage
+    } 
     edges {
       node {
         name
@@ -36,7 +45,12 @@ query {
 </page-query>
 
 <script>
+import PaginationPosts from "~/components/PaginationPosts";
+
 export default {
+  components: {
+    PaginationPosts,
+  },
   metaInfo() {
     return {
       title: "Abundance of Works.",

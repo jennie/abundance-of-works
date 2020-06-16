@@ -1,30 +1,15 @@
 <template>
   <Layout>
     <div class="container-inner mx-auto py-16">
-      <div class="">
-        <div
-          v-for="work in $page.allWork.edges"
-          :key="work.id"
-          class="my-2 py-2 border-b"
-        >
+      <div class="divide-y divide-gray-400">
+        <div v-for="work in $page.allWork.edges" :key="work.id" class="py-4">
           <h2 class="text-2xl">
             <g-link :to="work.node.path">{{ work.node.title }}</g-link>
           </h2>
-          <p class="font-bold">
-            {{ work.node.year.name }}
-          </p>
-          <div v-if="work.node.creators" class="creators mt-2">
-            <span
-              v-for="creator in work.node.creators"
-              :key="creator.id"
-              class="tag bg-gray-200 rounded-full px-2 py-1 mr-4 hover:bg-gray-400 no-underline "
-            >
-              {{ creator.name }}
-            </span>
-          </div>
         </div>
 
         <pagination-posts
+          class="pt-8"
           v-if="$page.allWork.pageInfo.totalPages > 1"
           base="/works"
           :totalPages="$page.allWork.pageInfo.totalPages"

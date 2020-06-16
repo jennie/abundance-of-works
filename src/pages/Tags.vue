@@ -1,28 +1,36 @@
 <template>
   <Layout>
     <div class="container-inner mx-auto py-16">
-      <div class="">
-        <div
-          v-for="tag in $page.allTag.edges"
-          :key="tag.id"
-          class="my-2 py-2 border-b"
-        >
+      <div class="divide-y divide-gray-400">
+        <div v-for="tag in $page.allTag.edges" :key="tag.id" class="py-4">
           <h2 class="text-2xl">
             <g-link :to="tag.node.path">{{ tag.node.name }}</g-link>
           </h2>
         </div>
       </div>
+      <pagination-posts
+        class="pt-8"
+        v-if="$page.allTag.pageInfo.totalPages > 1"
+        base="/tags"
+        :totalPages="$page.allTag.pageInfo.totalPages"
+        :currentPage="$page.allTag.pageInfo.currentPage"
+      />
     </div>
   </Layout>
 </template>
 
 <page-query>
-query {
+query ($page: Int) {
   metadata {
     siteName
     siteUrl
   }
-  allTag(sortBy: "Name", order:DESC) {
+  allTag(sortBy: "name", order: DESC, perPage: 10, page: $page) @paginate {
+    totalCount
+    pageInfo {
+      totalPages
+      currentPage
+    }
     edges {
       node {
         name
@@ -36,7 +44,12 @@ query {
 </page-query>
 
 <script>
+import PaginationPosts from "~/components/PaginationPosts";
+
 export default {
+  components: {
+    PaginationPosts,
+  },
   metaInfo() {
     return {
       title: "Abundance of Works.",

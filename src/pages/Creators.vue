@@ -1,28 +1,41 @@
 <template>
   <Layout>
     <div class="container-inner mx-auto py-16">
-      <div class="">
+      <div class="divide-y divide-gray-400">
         <div
           v-for="creator in $page.allCreator.edges"
           :key="creator.id"
-          class="my-2 py-2 border-b"
+          class="py-4"
         >
           <h2 class="text-2xl">
             <g-link :to="creator.node.path">{{ creator.node.name }}</g-link>
           </h2>
         </div>
       </div>
+
+      <pagination-posts
+        class="pt-8"
+        v-if="$page.allCreator.pageInfo.totalPages > 1"
+        base="/creators"
+        :totalPages="$page.allCreator.pageInfo.totalPages"
+        :currentPage="$page.allCreator.pageInfo.currentPage"
+      />
     </div>
   </Layout>
 </template>
 
 <page-query>
-query {
+query ($page: Int) {
   metadata {
     siteName
     siteUrl
   }
-  allCreator {
+  allCreator(sortBy: "name", order: DESC, perPage: 10, page: $page) @paginate {
+    totalCount
+    pageInfo {
+      totalPages
+      currentPage
+    }
     edges {
       node {
         name
@@ -38,12 +51,15 @@ query {
     }
   }
 }
-
-
 </page-query>
 
 <script>
+import PaginationPosts from "~/components/PaginationPosts";
+
 export default {
+  components: {
+    PaginationPosts,
+  },
   metaInfo() {
     return {
       title: "Abundance of Works",
