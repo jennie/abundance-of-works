@@ -1,1 +1,5 @@
-/index /works
+[[redirects]]
+  from = "/"
+  to = "/works"
+  status = 301
+  force = true
