@@ -3,10 +3,13 @@
     <div class="container-inner mx-auto py-16">
       <div class="divide-y divide-gray-400">
         <div v-for="work in $page.allWork.edges" :key="work.id">
-          <g-link :to="work.node.path" class="py-4 flex items-baseline">
-            <span class="text-2xl text-left">{{ work.node.title }}</span>
+          <g-link
+            :to="work.node.path"
+            class="py-4 flex items-baseline flex-wrap justify-start"
+          >
+            <span class="text-2xl text-left mr-2">{{ work.node.title }}</span>
 
-            <div class="text-base text-right font-normal ml-4">
+            <div class="text-base font-normal">
               <template v-for="(value, index) in work.node.creators">
                 <template v-if="index > 0"
                   >,
