@@ -2,6 +2,9 @@
   <Layout>
     <div class="container-inner mx-auto py-16">
       <div class="">
+        <div v-if="$page.work.livingFire == true" class="text-red-600 uppercase text-sm tracking-wide font-bold">
+          Living Fire
+        </div>
         <div class="title flex justify-between items-center">
           <h1 class="text-3xl font-bold leading-tight  align-middle">
             {{ $page.work.title }}
@@ -93,6 +96,7 @@ query ($id: ID) {
     title
     adaptedFrom
     withEnsemble
+    livingFire
     year {
       name
       path
@@ -128,3 +132,4 @@ main {
   }
 }
 </style>
+
