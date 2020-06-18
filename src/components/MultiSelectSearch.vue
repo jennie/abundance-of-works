@@ -36,7 +36,7 @@
           <a
             v-for="(result, index) in results"
             :key="index"
-            :href="result.path"
+            :href="result.item.path"
             @click="reset"
             class="search-result"
           >
