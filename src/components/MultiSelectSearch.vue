@@ -28,30 +28,31 @@
       </div>
     </div>
     <transition name="fade">
-      <div
-        v-if="query.length > 0 && searchResultsVisible"
-        class="normal-case left-0 right-0 w-full text-left mb-4 mt-2 overflow-hidden z-10 overflow-y-auto no-underline"
-      >
-        <div class="flex flex-col" ref="results">
+      <div>
+        <div class="divide-y divide-gray-400">
           <a
             v-for="(result, index) in results"
             :key="index"
             :href="result.item.path"
             @click="reset"
-            class="search-result"
+            class="py-4 flex items-baseline flex-wrap justify-start"
           >
-            <div class="flex justify-between">
-              <div class="text-gray-700">
-                {{ result.item.title }}
-                <span
+            <span class="text-2xl text-left mr-2">{{ result.item.title }}</span>
+            <div class="text-base font-normal">
+              <template v-for="(value, index) in result.item.creators">
+                <template v-if="index > 0"
+                  >,
+                </template>
+                <span :key="index">{{ value.name }}</span>
+              </template>
+            </div>
+            <!-- <span
                   v-for="tag in result.item.tags"
                   :key="tag.id"
                   class="rounded font-normal bg-teal-100 px-2 mr-2"
                 >
                   {{ tag.name }}
-                </span>
-              </div>
-            </div>
+                </span> -->
           </a>
 
           <div
@@ -72,6 +73,9 @@
           id
           path
           title
+          creators {
+            name
+          }
           idFromTags
           tags {
             name
@@ -109,6 +113,7 @@ export default {
         result.push({
           path: page.path,
           title: page.title,
+          creators: page.creators,
           tagIds: page.idFromTags,
           tags: page.tags,
           id: page.id,

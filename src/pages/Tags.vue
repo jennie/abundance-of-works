@@ -2,20 +2,6 @@
   <Layout>
     <div class="container-inner mx-auto py-16">
       <MultiSelectSearch />
-      <!-- <div class="divide-y divide-gray-400">
-        <div v-for="tag in $page.allTag.edges" :key="tag.id" class="py-4">
-          <h2 class="text-2xl">
-            <g-link :to="tag.node.path">{{ tag.node.name }}</g-link>
-          </h2>
-        </div>
-      </div>
-      <pagination-posts
-        class="pt-8"
-        v-if="$page.allTag.pageInfo.totalPages > 1"
-        base="/tags"
-        :totalPages="$page.allTag.pageInfo.totalPages"
-        :currentPage="$page.allTag.pageInfo.currentPage"
-      /> -->
     </div>
   </Layout>
 </template>
@@ -40,8 +26,6 @@ query ($page: Int) {
     }
   }
 }
-
-
 </page-query>
 
 <script>
