@@ -10,7 +10,7 @@
               type="checkbox"
               class="mr-2 leading-tight items-center"
               @change="performSearch"
-              :value="tag.node.id"
+              :value="`${tag.node.id}`"
               v-model="query"
             />
             <span class="text-xl">{{ tag.node.name }}</span>
@@ -42,7 +42,7 @@
           >
             <div class="flex justify-between">
               <div class="text-gray-700">
-                {{ result.item.title }} -- {{ result.score }}
+                {{ result.item.title }}
                 <span
                   v-for="tag in result.item.tags"
                   :key="tag.id"
@@ -72,7 +72,7 @@
           id
           path
           title
-          nameFromTags
+          idFromTags
           tags {
             name
             id
@@ -95,6 +95,7 @@
 <script>
 import SearchFocus from "./SearchFocus";
 import { format } from "util";
+import Fuse from "fuse.js";
 
 export default {
   components: {
@@ -108,6 +109,7 @@ export default {
         result.push({
           path: page.path,
           title: page.title,
+          tagIds: page.idFromTags,
           tags: page.tags,
           id: page.id,
         });
@@ -122,11 +124,9 @@ export default {
       results: [],
       searchResultsVisible: true,
       options: {
-        tokenize: true,
-        includeScore: true,
-        shouldSort: true,
-        findAllMatches: true,
-        keys: ["tags.id"],
+        keys: ["tagIds"],
+        useExtendedSearch: true,
+        threshold: 0.0,
       },
     };
   },
@@ -136,11 +136,13 @@ export default {
       this.highlightedIndex = 0;
     },
     performSearch() {
-      // var tagQuery = this.query.join(" ");
-      var tagQuery = this.query.join(" ");
-      this.$search(tagQuery, this.pages, this.options).then((results) => {
-        this.results = results;
+      const tagQuery = this.query.map((tagIds) => ({ tagIds }));
+      console.log(tagQuery);
+      const fuse = new Fuse(this.pages, this.options);
+      this.results = fuse.search({
+        $and: tagQuery,
       });
+      return this.results;
     },
 
     focusSearch(e) {
