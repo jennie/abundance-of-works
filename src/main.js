@@ -6,7 +6,6 @@ import DefaultLayout from "~/layouts/Default.vue";
 import VueScrollTo from "vue-scrollto";
 import VueLuxon from "vue-luxon";
 
-import VueFuse from "vue-fuse";
 export default function(Vue, { router, head, isClient }) {
   head.htmlAttrs = { lang: "en" };
   head.bodyAttrs = {
@@ -33,11 +32,10 @@ export default function(Vue, { router, head, isClient }) {
       },
     },
   });
-  Vue.use(VueFuse);
 
   head.meta.push({
     name: "author",
-    content: "Dames Making Games",
+    content: "AD HOC Assembly",
   });
 
   head.link.push({
