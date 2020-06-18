@@ -28,6 +28,7 @@
     "vue-fuse": "^2.2.1",
     "vue-gtm": "^2.3.0",
     "vue-luxon": "^0.7.3",
+    "vue-multiselect": "^2.1.6",
     "vue-scrollto": "^2.18.1"
   },
   "devDependencies": {

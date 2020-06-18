@@ -1,6 +1,7 @@
 <template>
   <Layout>
     <div class="container-inner mx-auto py-16">
+      <MultiSelectSearch />
       <div class="divide-y divide-gray-400">
         <div v-for="tag in $page.allTag.edges" :key="tag.id" class="py-4">
           <h2 class="text-2xl">
@@ -45,10 +46,12 @@ query ($page: Int) {
 
 <script>
 import PaginationPosts from "~/components/PaginationPosts";
+import MultiSelectSearch from "~/components/MultiSelectSearch";
 
 export default {
   components: {
     PaginationPosts,
+    MultiSelectSearch,
   },
   metaInfo() {
     return {
