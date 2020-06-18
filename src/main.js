@@ -37,7 +37,7 @@ export default function(Vue, { router, head, isClient }) {
 
   head.meta.push({
     name: "author",
-    content: "Dames Making Games",
+    content: "AD HOC Assembly",
   });
 
   head.link.push({

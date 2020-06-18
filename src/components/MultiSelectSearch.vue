@@ -2,45 +2,21 @@
   <div class=" mx-auto">
     <search-focus @keyup="focusSearch"></search-focus>
 
-    <div>
-      <button @click="performSearch">Perform Search</button>
-      <input
-        type="checkbox"
-        @change="performSearch"
-        value="Indigenous"
-        v-model="query"
-      />
-      <label for="Indigenous">Indigenous</label>
-      <input
-        type="checkbox"
-        @change="performSearch"
-        value="female"
-        v-model="query"
-      />
-      <label for="female">female</label>
-      <input
-        type="checkbox"
-        @change="performSearch"
-        value="Disabled"
-        v-model="query"
-      />
-      <label for="Disabled">disabled</label>
-      <br />
-      <!-- <input
-        type="text"
-        placeholder="Search"
-        class="bg-background-form border border-gray-500 rounded-full px-4 pl-10 py-2 outline-none focus:border-gray-500 w-80"
-        v-model="tagQuery"
-        @input="softReset"
-        @keyup="performSearch"
-        @keyup.esc="searchResultsVisible = false"
-        @keydown.up.prevent="highlightPrev"
-        @keydown.down.prevent="highlightNext"
-        @keyup.enter="gotoLink"
-        @blur="searchResultsVisible = false"
-        @focus="searchResultsVisible = true"
-        ref="search"
-      /> -->
+    <div class="">
+      <div v-for="tag in $static.allTag.edges" :key="tag.id">
+        <div class="block">
+          <label class="font-normal">
+            <input
+              type="checkbox"
+              class="mr-2 leading-tight items-center"
+              @change="performSearch"
+              :value="tag.node.id"
+              v-model="query"
+            />
+            <span class="text-xl">{{ tag.node.name }}</span>
+          </label>
+        </div>
+      </div>
 
       <div
         v-if="query.length > 0"
@@ -60,20 +36,20 @@
           <a
             v-for="(result, index) in results"
             :key="index"
-            :href="result.item.path"
+            :href="result.path"
             @click="reset"
             class="search-result"
-            :class="{ 'search-highlighted': index === highlightedIndex }"
           >
             <div class="flex justify-between">
               <div class="text-gray-700">
-                {{ result.item.title }}
-              </div>
-
-              <div
-                class="text-gray-600 text-center uppercase text-sm font-normal"
-              >
-                {{ result.item.type }}
+                {{ result.item.title }} -- {{ result.score }}
+                <span
+                  v-for="tag in result.item.tags"
+                  :key="tag.id"
+                  class="rounded font-normal bg-teal-100 px-2 mr-2"
+                >
+                  {{ tag.name }}
+                </span>
               </div>
             </div>
           </a>
@@ -81,13 +57,7 @@
           <div
             v-if="results.length === 0"
             class="bg-background-form font-normal w-full border-b cursor-pointer p-4"
-          >
-            <p class="my-0">
-              No results for '
-              <strong>{{ query }}</strong
-              >'
-            </p>
-          </div>
+          ></div>
         </div>
       </div>
     </transition>
@@ -103,16 +73,28 @@
           path
           title
           nameFromTags
-          
+          tags {
+            name
+            id
+          }
         }
       }
     }
-   
+    allTag {
+      edges {
+        node {
+          name
+          path
+          id
+        }
+      }
+    }
   }
 </static-query>
 
 <script>
 import SearchFocus from "./SearchFocus";
+import { format } from "util";
 
 export default {
   components: {
@@ -126,8 +108,8 @@ export default {
         result.push({
           path: page.path,
           title: page.title,
-          tags: page.nameFromTags,
-          type: "work",
+          tags: page.tags,
+          id: page.id,
         });
       });
 
@@ -137,53 +119,30 @@ export default {
   data() {
     return {
       query: [],
-      tagquery: "",
       results: [],
-      highlightedIndex: 0,
-      searchResultsVisible: false,
+      searchResultsVisible: true,
       options: {
-        keys: ["tags"],
+        tokenize: true,
+        includeScore: true,
+        shouldSort: true,
+        findAllMatches: true,
+        keys: ["tags.id"],
       },
     };
   },
   methods: {
     reset() {
-      this.query = "";
+      this.query = [];
       this.highlightedIndex = 0;
-    },
-    softReset() {
-      this.highlightedIndex = 0;
-      this.searchResultsVisible = true;
     },
     performSearch() {
-      this.$search(this.query.join(" "), this.pages, this.options).then(
-        (results) => {
-          this.results = results;
-        }
-      );
-    },
-    highlightPrev() {
-      if (this.highlightedIndex > 0) {
-        this.highlightedIndex = this.highlightedIndex - 1;
-        this.scrollIntoView();
-      }
-    },
-    highlightNext() {
-      if (this.highlightedIndex < this.results.length - 1) {
-        this.highlightedIndex = this.highlightedIndex + 1;
-        this.scrollIntoView();
-      }
-    },
-    scrollIntoView() {
-      this.$refs.results.children[this.highlightedIndex].scrollIntoView({
-        block: "nearest",
+      // var tagQuery = this.query.join(" ");
+      var tagQuery = this.query.join(" ");
+      this.$search(tagQuery, this.pages, this.options).then((results) => {
+        this.results = results;
       });
     },
-    gotoLink() {
-      if (this.results[this.highlightedIndex]) {
-        window.location = this.results[this.highlightedIndex].item.url;
-      }
-    },
+
     focusSearch(e) {
       if (e.key === "/") {
         this.$refs.search.focus();
