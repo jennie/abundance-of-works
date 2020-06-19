@@ -2,7 +2,10 @@
   <Layout>
     <div class="container-inner mx-auto py-16">
       <div class="">
-        <div v-if="$page.work.livingFire == true" class="text-red-600 uppercase text-sm tracking-wide font-bold">
+        <div
+          v-if="isLivingFire() == true"
+          class="text-red-600 uppercase text-sm tracking-wide font-bold"
+        >
           Living Fire
         </div>
         <div class="title flex justify-between items-center">
@@ -47,42 +50,47 @@
         <div v-if="$page.work.tags" class="publishers my-6">
           <div
             class="text-xl uppercase tracking-wide te text-gray-600 border-t-2  mt-6 mb-3 pt-2"
-          >Tags</div>
-            <span
-              v-for="tag in $page.work.tags"
-              :key="tag.id"
-              class="tag bg-gray-200 rounded-full px-2 py-1 mr-4 hover:bg-blue-400 no-underline text-black no-underline"
-            >
-              <g-link :to="tag.path" class=" text-black no-underline">
-                {{ tag.name }}
-              </g-link>
-            </span>
-          </div>
-        </div>
-
-        <div v-if="$page.work.producers.length > 0" class="producers mt-2">
-          <div class="text-xl uppercase tracking-wide te text-gray-600 border-t-2  mt-6 mb-3 pt-2">
-            {{ $page.work.producers.length > 1 ? "Producers" : "Producer" }}
-          </div>
-          <span
-            v-for="producer in $page.work.producers"
-            :key="producer.id"
-            class="tag bg-red-200 rounded-full px-2 py-1 mr-4 hover:bg-red-400 no-underline "
           >
-            <g-link :to="producer.path">{{ producer.name }}</g-link>
-          </span>
-        </div>
-        <div v-if="$page.work.publishers.length > 0" class="publishers mt-2">
-          <div class="text-xl uppercase tracking-wide te text-gray-600 border-t-2  mt-6 mb-3 pt-2" >
-            {{ $page.work.publishers.length > 1 ? "Publishers" : "Publisher" }}
+            Tags
           </div>
           <span
-            v-for="publisher in $page.work.publishers"
-            :key="publisher.id"
-            class="tag bg-blue-200 rounded-full px-2 py-1 mr-4 hover:bg-blue-400 no-underline "
-            ><g-link :to="publisher.path"> {{ publisher.name }}</g-link>
+            v-for="tag in $page.work.tags"
+            :key="tag.id"
+            class="tag bg-gray-200 rounded-full px-2 py-1 mr-4 hover:bg-blue-400 no-underline text-black no-underline"
+          >
+            <g-link :to="tag.path" class=" text-black no-underline">
+              {{ tag.name }}
+            </g-link>
           </span>
         </div>
+      </div>
+
+      <div v-if="$page.work.producers.length > 0" class="producers mt-2">
+        <div
+          class="text-xl uppercase tracking-wide te text-gray-600 border-t-2  mt-6 mb-3 pt-2"
+        >
+          {{ $page.work.producers.length > 1 ? "Producers" : "Producer" }}
+        </div>
+        <span
+          v-for="producer in $page.work.producers"
+          :key="producer.id"
+          class="tag bg-red-200 rounded-full px-2 py-1 mr-4 hover:bg-red-400 no-underline "
+        >
+          <g-link :to="producer.path">{{ producer.name }}</g-link>
+        </span>
+      </div>
+      <div v-if="$page.work.publishers.length > 0" class="publishers mt-2">
+        <div
+          class="text-xl uppercase tracking-wide te text-gray-600 border-t-2  mt-6 mb-3 pt-2"
+        >
+          {{ $page.work.publishers.length > 1 ? "Publishers" : "Publisher" }}
+        </div>
+        <span
+          v-for="publisher in $page.work.publishers"
+          :key="publisher.id"
+          class="tag bg-blue-200 rounded-full px-2 py-1 mr-4 hover:bg-blue-400 no-underline "
+          ><g-link :to="publisher.path"> {{ publisher.name }}</g-link>
+        </span>
       </div>
     </div>
   </Layout>
@@ -96,7 +104,6 @@ query ($id: ID) {
     title
     adaptedFrom
     withEnsemble
-    livingFire
     year {
       name
       path
@@ -120,8 +127,34 @@ query ($id: ID) {
     }        
   }
 }
-
 </page-query>
+<script>
+// TODO: make livingfire check a global component
+export default {
+  data() {
+    return {
+      tagList: [],
+    };
+  },
+  computed: {
+    listTags() {
+      let tagList = [];
+      const tags = this.$page.work.tags;
+      tags.forEach(function(tag) {
+        tagList.push(tag.name);
+      });
+      return tagList;
+    },
+  },
+  methods: {
+    isLivingFire() {
+      if (this.listTags.includes("Indigenous")) {
+        return true;
+      }
+    },
+  },
+};
+</script>
 <style lang="postcss">
 main {
   .post-link {
@@ -132,4 +165,3 @@ main {
   }
 }
 </style>
-
