@@ -109,6 +109,7 @@
 
 <script>
 import SearchFocus from "./SearchFocus";
+import Fuse from "fuse.js";
 
 export default {
   components: {
@@ -147,11 +148,8 @@ export default {
       options: {
         shouldSort: true,
         includeMatches: true,
-        threshold: 0.5,
-        location: 0,
-        distance: 500,
-        maxPatternLength: 32,
-        minMatchCharLength: 3,
+        useExtendedSearch: true,
+        threshold: 0.0,
         keys: ["title"],
       },
     };
@@ -166,9 +164,9 @@ export default {
       this.searchResultsVisible = true;
     },
     performSearch() {
-      this.$search(this.query, this.pages, this.options).then((results) => {
-        this.results = results;
-      });
+      const fuse = new Fuse(this.pages, this.options);
+      this.results = fuse.search(this.query);
+      return this.results;
     },
     highlightPrev() {
       if (this.highlightedIndex > 0) {
