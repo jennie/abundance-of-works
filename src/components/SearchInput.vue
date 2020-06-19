@@ -149,7 +149,8 @@ export default {
         shouldSort: true,
         includeMatches: true,
         useExtendedSearch: true,
-        threshold: 0.0,
+        ignoreLocation: true,
+        threshold: 0.2,
         keys: ["title"],
       },
     };
