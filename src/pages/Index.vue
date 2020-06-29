@@ -2,9 +2,10 @@
   <Layout>
     <div class="container-inner mx-auto py-16">
       <div class="">
-        <div>
-          <pre>{{ JSON.stringify(myChartData, null, 2) }}</pre>
-          <PieChart :chartdata="myChartData" :options="options"></PieChart>
+        <div class="grid grid-cols-3 g gap-20">
+          <PieChart :chartdata="GenderData" :options="options"></PieChart>
+          <PieChart :chartdata="RaceData" :options="options"></PieChart>
+          <PieChart :chartdata="AbilityData" :options="options"></PieChart>
         </div>
       </div>
     </div>
@@ -23,20 +24,38 @@ main {
 </style>
 
 <static-query>
-{
+query tags {
   allWork {
     totalCount
   }
-  allTagTypes {
+  genderTags: allTagTypes(filter: {name: {eq: "Gender"}}) {
     edges {
       node {
-        name
-        tags {
-          count
-          name
-        }
+        ...tagQuery
       }
     }
+  }
+  raceTags: allTagTypes(filter: {name: {eq: "Race"}}) {
+    edges {
+      node {
+        ...tagQuery
+      }
+    }
+  }
+  abilityTags: allTagTypes(filter: {name: {eq: "Ability"}}) {
+    edges {
+      node {
+        ...tagQuery
+      }
+    }
+  }
+}
+
+fragment tagQuery on TagTypes {
+  name
+  tags {
+    count
+    name
   }
 }
 
@@ -50,14 +69,6 @@ export default {
   },
   data() {
     return {
-      chartdata: {
-        datasets: [
-          {
-            data: [10, 20, 30],
-          },
-        ],
-        labels: ["Red", "Yellow", "Blue"],
-      },
       options: {
         responsive: true,
         maintainAspectRatio: false,
@@ -66,16 +77,13 @@ export default {
   },
 
   computed: {
-    myChartData: function() {
+    GenderData: function() {
       let labels = [];
       let data_tagType = [];
 
-      const tagTypes = this.$static.allTagTypes.edges.map((edge) => edge.node);
+      const tagTypes = this.$static.genderTags.edges.map((edge) => edge.node);
       tagTypes.forEach((tagType) => {
-        console.log(tagType.name);
-
         const tags = tagType.tags.map((obj) => {
-          console.log(obj.count);
           labels.push(obj.name);
           data_tagType.push(obj.count);
         });
@@ -84,16 +92,38 @@ export default {
         labels: labels,
         datasets: [{ data: data_tagType }],
       };
+    },
+    RaceData: function() {
+      let labels = [];
+      let data_tagType = [];
 
-      // this.$static.allTagTypes.edges.forEach((edge) => {
-      //   console.log(edge.node.tags);
-      //   labels.push(edge.node.tags.name);
-      //   data_tagType.push(edge.node.tags.count);
-      // });
-      // return {
-      //   labels: labels,
-      //   datasets: [data_tagType],
-      // };
+      const tagTypes = this.$static.raceTags.edges.map((edge) => edge.node);
+      tagTypes.forEach((tagType) => {
+        const tags = tagType.tags.map((obj) => {
+          labels.push(obj.name);
+          data_tagType.push(obj.count);
+        });
+      });
+      return {
+        labels: labels,
+        datasets: [{ data: data_tagType }],
+      };
+    },
+    AbilityData: function() {
+      let labels = [];
+      let data_tagType = [];
+
+      const tagTypes = this.$static.abilityTags.edges.map((edge) => edge.node);
+      tagTypes.forEach((tagType) => {
+        const tags = tagType.tags.map((obj) => {
+          labels.push(obj.name);
+          data_tagType.push(obj.count);
+        });
+      });
+      return {
+        labels: labels,
+        datasets: [{ data: data_tagType }],
+      };
     },
   },
 
