@@ -81,6 +81,20 @@ module.exports = {
                 fieldName: "Works",
                 typeName: "Work",
               },
+              {
+                fieldName: "Tag Types",
+                typeName: "TagTypes",
+              },
+            ],
+          },
+          {
+            name: "Tag Types",
+            typeName: "TagTypes",
+            links: [
+              {
+                fieldName: "Tags",
+                typeName: "Tag",
+              },
             ],
           },
           {

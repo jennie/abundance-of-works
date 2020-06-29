@@ -5,6 +5,7 @@ import DefaultLayout from "~/layouts/Default.vue";
 
 import VueScrollTo from "vue-scrollto";
 import VueLuxon from "vue-luxon";
+import VueCharts from "vue-chartjs";
 
 export default function(Vue, { router, head, isClient }) {
   head.htmlAttrs = { lang: "en" };
@@ -14,6 +15,7 @@ export default function(Vue, { router, head, isClient }) {
 
   // Set default layout as a global component
   Vue.component("Layout", DefaultLayout);
+  Vue.use(VueCharts);
 
   Vue.use(VueScrollTo, {
     duration: 500,
