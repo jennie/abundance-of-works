@@ -1,5 +1,8 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   purge: ["./src/**/*.vue", "./**/main.js"],
+  plugins: [require("@tailwindcss/ui")],
   theme: {
     extend: {
       spacing: {
@@ -13,22 +16,9 @@ module.exports = {
     container: {
       padding: "1rem",
     },
-
     fontFamily: {
-      sans: [
-        "Roboto",
-        "-apple-system",
-        "BlinkMacSystemFont",
-        '"Segoe UI"',
-        '"Helvetica Neue"',
-        "Arial",
-        '"Noto Sans"',
-        "sans-serif",
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-        '"Noto Color Emoji"',
-      ],
+      sans: ["Inter var", ...defaultTheme.fontFamily.sans],
+
       serif: ["Georgia", "Cambria", '"Times New Roman"', "Times", "serif"],
       mono: [
         '"PT Mono"',
@@ -40,10 +30,4 @@ module.exports = {
       ],
     },
   },
-  variants: {
-    // Some useful comment
-  },
-  plugins: [
-    // Some useful comment
-  ],
 };

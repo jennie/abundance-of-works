@@ -13,6 +13,7 @@
     "@gridsome/source-filesystem": "^0.6.2",
     "@gridsome/transformer-remark": "^0.3.4",
     "@gridsome/vue-remark": "^0.1.10",
+    "@tailwindcss/ui": "^0.3.0",
     "axios": "^0.19.2",
     "chart.js": "^2.9.3",
     "fuse.js": "^6.4.0",
