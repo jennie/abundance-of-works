@@ -45,6 +45,10 @@ export default function(Vue, { router, head, isClient }) {
     href:
       "https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700|Roboto:400,400i,900&display=swap",
   });
+  head.link.push({
+    rel: "stylesheet",
+    href: "https://rsms.me/inter/inter.css",
+  });
   Vue.use(VueLuxon, {
     clientZone: "America/Toronto",
     serverZone: "America/Toronto",

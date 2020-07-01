@@ -2,34 +2,30 @@
   <div class=" mx-auto">
     <div class="flex flex-wrap">
       <div class="md:w-full lg:w-1/3">
-        <div v-for="tag in $static.allTag.edges" :key="tag.id">
-          <div class="block">
-            <label class="font-normal">
+        <div class="mt-4" v-for="tag in $static.allTag.edges" :key="tag.id">
+            <div class="relative flex items-start">
+                            <div class="absolute flex items-center h-5">
+
               <input
                 type="checkbox"
-                class="mr-2 leading-tight items-center"
+                  :id="`tag-checkbox-${tag.node.name}`"
+                  class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
                 @change="performSearch"
                 :value="`${tag.node.id}`"
                 v-model="tagSelected"
               />
-              <!-- On: "bg-indigo-600", Off: "bg-gray-200" -->
-
-              <!-- <span
-                role="checkbox"
-                tabindex="0"
-                aria-checked="false"
-                @click="`() => setIsOn(!isOn)`"
-                class="`${isOn ? 'bg-indigo-600' : 'bg-gray-200'} relative inline-block flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:shadow-outline`"
-              ></span> -->
-              <!-- On: "translate-x-5", Off: "translate-x-0" -->
-              <!-- <span
-                aria-hidden="true"
-                class="`${isOn ? 'translate-x-5' : 'translate-x-0'} inline-block h-5 w-5 rounded-full bg-white shadow transform transition ease-in-out duration-200`"
-              ></span> -->
-
-              <span class="text-base">{{ tag.node.name }}</span>
+              </div>
+              <div class="pl-7 text-sm leading-5">
+                <label
+                  :for="`tag-checkbox-${tag.node.name}`"
+                  class="text-xl font-regular text-gray-700"
+                  >{{ tag.node.name }}
+                </label>
+              </div>
             </label>
           </div>
+
+          
         </div>
 
         <div
@@ -45,7 +41,7 @@
       <div class="md:w-full lg:w-2/3">
         <div
           v-if="tagSearchResults.length === 0 && tagSelected.length > 0"
-          class="bg-background-form font-normal w-full border-b cursor-pointer p-4 bg-gray-300"
+          class="bg-form font-normal w-full cursor-pointer p-4 bg-gray-100 rounded shadow-md"
         >
           <p class="my-0">
             Nothing matches all of those tags. Try selecting fewer, or a
@@ -83,7 +79,7 @@
 
             <div
               v-if="tagSearchResults.length === 0"
-              class="bg-background-form font-normal w-full border-b cursor-pointer p-4"
+              class="bg-form font-normal w-full border-b cursor-pointer p-4"
             ></div>
           </div>
         </transition>

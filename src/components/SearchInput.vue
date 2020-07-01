@@ -6,7 +6,7 @@
       <input
         type="text"
         placeholder="Search"
-        class="bg-background-form border border-gray-500 rounded-full px-4 pl-10 py-2 outline-none focus:border-gray-500 w-80"
+        class="bg-form border border-gray-500 rounded-full px-4 pl-10 py-2 outline-none focus:border-gray-500 w-80"
         v-model="query"
         @input="softReset"
         @keyup="performSearch"
@@ -71,7 +71,7 @@
 
           <div
             v-if="results.length === 0"
-            class="bg-background-form font-normal w-full border-b cursor-pointer p-4"
+            class="bg-form font-normal w-full border-b cursor-pointer p-4"
           >
             <p class="my-0">
               No results for '

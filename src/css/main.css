@@ -48,8 +48,13 @@ main {
   transition: background-color 0.25s;
 }
 
+nav a {
+  @apply text-indigo-500 font-medium;
+
+}
+
 a {
-  @apply text-gray-700 font-bold;
+  @apply text-gray-700 font-medium;
 }
 
 a:hover {
@@ -57,8 +62,7 @@ a:hover {
 }
 
 nav .active--exact {
-  font-weight: bold;
-  @apply border-red-400 border-b-2;
+  @apply border-indigo-400 border-b-2;
 }
 
 .container-inner {

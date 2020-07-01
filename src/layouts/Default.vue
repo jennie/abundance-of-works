@@ -1,6 +1,6 @@
 <template>
   <div
-    class="content-wrapper bg-background-primary leading-normal flex flex-col min-h-screen"
+    class="content-wrapper bg-primary leading-normal flex flex-col min-h-screen"
   >
     <header class="border-t-14 border-black">
       <div class="text-center mt-6">
@@ -19,9 +19,12 @@
             </button>
           </div>
           <ul
-            class="uppercase justify-center tracking-wide items-center font-bold w-full block flex-grow lg:flex lg:w-auto items-center mt-8 lg:mt-0"
+            class="uppercase justify-center tracking-wide items-center font-medium w-full block flex-grow lg:flex lg:w-auto items-center mt-8 lg:mt-0"
             :class="isOpen ? 'block' : 'hidden'"
           >
+            <li class="text-center px-6 mb-10 lg:mb-0 ">
+              <g-link to="/">Home</g-link>
+            </li>
             <li class="text-center px-6 mb-10 lg:mb-0 ">
               <g-link to="/works">Works</g-link>
             </li>
@@ -47,9 +50,36 @@
       </main>
     </transition>
     <footer class="bg-black text-white">
-      <div
-        class="container mx-auto flex flex-col lg:flex-row items-center justify-between py-8"
-      ></div>
+      <div class="bg-white">
+        <div
+          class="max-w-screen-xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8"
+        >
+          <nav class="-mx-5 -my-2 flex flex-wrap justify-center">
+            <div class="px-5 py-2">
+              <a
+                href="#"
+                class="text-base leading-6 text-gray-500 hover:text-gray-900"
+              >
+                About
+              </a>
+            </div>
+            <div class="px-5 py-2">
+              <g-link
+                to="/submit"
+                class="text-base leading-6 text-gray-500 hover:text-gray-900"
+              >
+                Submit a Work
+              </g-link>
+            </div>
+          </nav>
+
+          <div class="mt-8">
+            <p class="text-center text-base leading-6 text-gray-400">
+              &copy; 2020 AD HOC Collective
+            </p>
+          </div>
+        </div>
+      </div>
     </footer>
   </div>
 </template>
@@ -84,8 +114,6 @@ import SearchInput from "../components/SearchInput";
 export default {
   components: {
     SearchInput,
-
-    // DmgLogo,
   },
 
   data() {
