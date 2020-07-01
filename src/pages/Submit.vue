@@ -261,10 +261,8 @@ export default {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: this.encode({
-          "form-name": e.target
-            .querySelector("#form-name")
-            .getAttribute("value"),
-          tags: this.tags,
+          "form-name": e.target.getAttribute("name"),
+          tags: [this.tags],
           ...this.formData,
         }),
       })
@@ -272,8 +270,8 @@ export default {
           this.submitted = true;
         })
         .catch((error) => {
-          console.log("====================================");
-          console.log(`error in submiting the form data:${error}`);
+          console.log(`error in submiting the fo
+          console.log("====================================");rm data:${error}`);
           console.log("====================================");
         });
     },
