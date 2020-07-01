@@ -1,6 +1,13 @@
 <template>
   <Layout>
     <div class="container-inner mx-auto py-16">
+      <div
+        v-if="submitted"
+        class="p-3 text-white bg-green-400 font-bold text-center"
+      >
+        Thank you for your submission!
+      </div>
+
       <form
         name="new-work-submission"
         method="POST"
@@ -25,9 +32,8 @@
                 Submit a work to the database
               </h3>
               <p class="mt-1 text-sm leading-5 text-gray-500">
-                This information will be reviewed by Ad Hoc Collective. We may
-                follow up with you if we need more information. Thank you for
-                taking the time to contribute!
+                This information will be reviewed by Ad Hoc Collective. Thank
+                you for taking the time to contribute!
               </p>
             </div>
             <div
@@ -134,34 +140,64 @@
               </p>
             </div>
             <div class="mt-6">
-              <fieldset>
-                <div class="mt-4">
-                  <div
-                    class="mt-4"
-                    v-for="tag in $page.tags.edges"
-                    :key="tag.id"
-                  >
-                    <div class="relative flex items-start">
-                      <div class="absolute flex items-center h-5">
-                        <input
-                          :id="`tag-checkbox-${tag.node.name}`"
-                          :value="tag.node.name"
-                          v-model="tags"
-                          type="checkbox"
-                          class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
-                        />
-                      </div>
-                      <div class="pl-7 text-sm leading-5">
-                        <label
-                          :for="`tag-checkbox-${tag.node.name}`"
-                          class="font-medium text-gray-700"
-                          >{{ tag.node.name }}
-                        </label>
-                      </div>
+              <fieldset class="flex flex-row flex-wrap">
+                <div
+                  class="mt-4 w-1/3 "
+                  v-for="tag in $page.tags.edges"
+                  :key="tag.id"
+                >
+                  <div class="relative flex items-start">
+                    <div class="absolute flex items-center h-5">
+                      <input
+                        :id="`tag-checkbox-${tag.node.name}`"
+                        :value="tag.node.name"
+                        name="tags"
+                        v-model="tags"
+                        type="checkbox"
+                        class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+                      />
+                    </div>
+                    <div class="pl-7 text-sm leading-5">
+                      <label
+                        :for="`tag-checkbox-${tag.node.name}`"
+                        class="font-medium text-gray-700"
+                        >{{ tag.node.name }}
+                      </label>
                     </div>
                   </div>
                 </div>
               </fieldset>
+            </div>
+
+            <div class="mt-8 border-t border-gray-200 pt-8">
+              <div>
+                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                  Contact
+                </h3>
+
+                <div
+                  class="mt-6 grid grid-cols-1 row-gap-6 col-gap-4 sm:grid-cols-6"
+                >
+                  <div class="sm:col-span-3">
+                    <label
+                      for="email"
+                      class="block text-sm font-medium leading-5 text-gray-700"
+                    >
+                      Email
+                    </label>
+                    <div class="mt-1 flex rounded-md shadow-sm">
+                      <input
+                        id="email"
+                        v-model="formData.email"
+                        class="flex-1 form-input block w-full min-w-0 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      />
+                    </div>
+                    <p class="mt-2 text-sm text-gray-500">
+                      We may follow up if we have any questions.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -170,9 +206,9 @@
             <span class="ml-3 inline-flex rounded-md shadow-sm">
               <button
                 type="submit"
-                class="inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
+                class="inline-flex justify-center py-2 px-4 border border-transparent text-xl leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
               >
-                Save
+                Submit
               </button>
             </span>
           </div>
@@ -202,7 +238,6 @@ export default {
   data() {
     return {
       submitted: false,
-
       formData: {},
       tags: [],
     };
@@ -221,6 +256,7 @@ export default {
         .join("&");
     },
     handleSubmit(e) {
+      console.log(this.formData);
       fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -228,6 +264,7 @@ export default {
           "form-name": e.target
             .querySelector("#form-name")
             .getAttribute("value"),
+          tags: this.tags,
           ...this.formData,
         }),
       })
