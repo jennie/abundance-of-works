@@ -3,13 +3,18 @@
     <div class="container-inner mx-auto py-16">
       <form
         name="new-work-submission"
-        method="post"
+        method="POST"
         v-on:submit.prevent="handleSubmit"
-        action="/success/"
         data-netlify="true"
+        v-if="!submitted"
         data-netlify-honeypot="bot-field"
       >
-        <input type="hidden" name="new-work-submission" value="contact" />
+        <input
+          type="hidden"
+          name="form-name"
+          id="form-name"
+          value="new-work-submission"
+        />
         <p hidden>
           <label> Don't fill this out: <input name="bot-field" /> </label>
         </p>
@@ -196,9 +201,16 @@ query {
 export default {
   data() {
     return {
+      submitted: false,
+
       formData: {},
       tags: [],
     };
+  },
+  watch: {
+    $route(to, from) {
+      this.submitted = false;
+    },
   },
   methods: {
     encode(data) {
@@ -213,13 +225,20 @@ export default {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: this.encode({
-          "form-name": e.target.getAttribute("name"),
-          tags: this.tags,
+          "form-name": e.target
+            .querySelector("#form-name")
+            .getAttribute("value"),
           ...this.formData,
         }),
       })
-        .then(() => this.$router.push("/success"))
-        .catch((error) => alert(error));
+        .then((response) => {
+          this.submitted = true;
+        })
+        .catch((error) => {
+          console.log("====================================");
+          console.log(`error in submiting the form data:${error}`);
+          console.log("====================================");
+        });
     },
   },
   metaInfo() {
