@@ -50,6 +50,7 @@
                   <input
                     id="title"
                     v-model="formData.title"
+                    name="title"
                     class="flex-1 form-input block w-full min-w-0 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                   />
                 </div>
@@ -65,6 +66,7 @@
                   <input
                     id="year"
                     v-model="formData.year"
+                    name="year"
                     class="flex-1 form-input block w-full min-w-0 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                   />
                 </div>
@@ -81,6 +83,7 @@
                   <textarea
                     id="creators"
                     v-model="formData.creators"
+                    name="creators"
                     rows="2"
                     class="form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                   ></textarea>
@@ -101,6 +104,7 @@
                   <textarea
                     id="producers"
                     v-model="formData.producers"
+                    name="producers"
                     rows="2"
                     class="form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                   ></textarea>
@@ -121,6 +125,7 @@
                   <textarea
                     id="publishers"
                     v-model="formData.publishers"
+                    name="publishers"
                     rows="2"
                     class="form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                   ></textarea>
@@ -151,7 +156,7 @@
                       <input
                         :id="`tag-checkbox-${tag.node.name}`"
                         :value="tag.node.name"
-                        name="tags"
+                        name="tags[]"
                         v-model="tags"
                         type="checkbox"
                         class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
@@ -189,6 +194,7 @@
                       <input
                         id="email"
                         v-model="formData.email"
+                        name="email"
                         class="flex-1 form-input block w-full min-w-0 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       />
                     </div>
