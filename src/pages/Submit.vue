@@ -9,7 +9,7 @@
       </div>
 
       <form
-        name="new-work-submission"
+        name="web-submission"
         method="POST"
         v-on:submit.prevent="handleSubmit"
         data-netlify="true"
@@ -20,7 +20,7 @@
           type="hidden"
           name="form-name"
           id="form-name"
-          value="new-work-submission"
+          value="web-submission"
         />
         <p hidden>
           <label> Don't fill this out: <input name="bot-field" /> </label>
@@ -201,6 +201,7 @@
             </div>
           </div>
         </div>
+
         <div class="mt-8 border-t border-gray-200 pt-5">
           <div class="flex justify-end">
             <span class="ml-3 inline-flex rounded-md shadow-sm">
