@@ -19,7 +19,9 @@ module.exports = {
           {
             name: "Works",
             typeName: "Work",
-            select: {},
+            select: {
+              filterByFormula: "Approved=TRUE()",
+            },
             links: [
               {
                 fieldName: "Creators",
@@ -46,6 +48,9 @@ module.exports = {
           {
             name: "Creators",
             typeName: "Creator",
+            select: {
+              filterByFormula: "Approved=TRUE()",
+            },
             links: [
               {
                 fieldName: "Works",
