@@ -1,6 +1,9 @@
 <template>
   <Layout>
     <div class="container-inner mx-auto py-16">
+      <div class="text-center text-4xl font-bold">
+        Abundance honours past, present, and future creators. We are here.
+      </div>
       <div class="">
         <div class="grid grid-cols-3 g gap-20">
           <PieChart :chartdata="GenderData" :options="options"></PieChart>
