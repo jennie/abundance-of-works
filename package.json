@@ -13,28 +13,28 @@
     "@gridsome/source-filesystem": "^0.6.2",
     "@gridsome/transformer-remark": "^0.3.4",
     "@gridsome/vue-remark": "^0.1.10",
-    "@tailwindcss/ui": "^0.3.0",
+    "@tailwindcss/ui": "^0.3.1",
     "axios": "^0.19.2",
-    "chart.js": "^2.9.3",
-    "fuse.js": "^6.4.0",
-    "gridsome": "^0.7.17",
+    "chart.js": "^2.9.4",
+    "fuse.js": "^6.4.3",
+    "gridsome": "^0.7.23",
     "gridsome-plugin-gtm": "^0.1.1",
     "gridsome-plugin-remark-shiki": "^0.3.1",
     "gridsome-plugin-rss": "^1.2.0",
     "lodash.pick": "^4.4.0",
-    "luxon": "^1.24.1",
-    "marked": "^1.1.0",
+    "luxon": "^1.25.0",
+    "marked": "^1.2.7",
     "minimist": "^0.2.1",
-    "postcss-nested": "^4.2.1",
+    "postcss-nested": "^4.2.3",
     "remark-footnotes": "^1.0.0",
-    "slugify": "^1.4.4",
-    "vue-chartjs": "^3.5.0",
-    "vue-gtm": "^2.3.1",
-    "vue-luxon": "^0.7.3",
+    "slugify": "^1.4.6",
+    "vue-chartjs": "^3.5.1",
+    "vue-gtm": "^2.3.4",
+    "vue-luxon": "^0.7.4",
     "vue-multiselect": "^2.1.6",
-    "vue-scrollto": "^2.18.1"
+    "vue-scrollto": "^2.20.0"
   },
   "devDependencies": {
-    "tailwindcss": "^1.4.6"
+    "tailwindcss": "^1.9.6"
   }
 }
