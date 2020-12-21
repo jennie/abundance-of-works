@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Editorial New';
+    src: url('EditorialNew-Bold.woff2') format('woff2'),
+        url('EditorialNew-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Editorial New';
+    src: url('EditorialNew-Ultrabold.woff2') format('woff2'),
+        url('EditorialNew-Ultrabold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Editorial New';
+    src: url('EditorialNew-Regular.woff2') format('woff2'),
+        url('EditorialNew-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

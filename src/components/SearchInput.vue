@@ -6,7 +6,7 @@
       <input
         type="text"
         placeholder="Search"
-        class="bg-form border border-gray-500 rounded-full px-4 pl-10 py-2 outline-none focus:border-gray-500 w-80"
+        class="block w-full pl-10 pr-3 py-2 border border-transparent rounded-md leading-5 bg-timber text-timber placeholder-linen focus:placeholder-timber focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900 sm:text-sm"
         v-model="query"
         @input="softReset"
         @keyup="performSearch"
@@ -14,14 +14,14 @@
         @keydown.up.prevent="highlightPrev"
         @keydown.down.prevent="highlightNext"
         @keyup.enter="gotoLink"
-        @blur="searchResultsVisible = false"
         @focus="searchResultsVisible = true"
         ref="search"
       />
+      <!-- @blur="searchResultsVisible = false" -->
       <div class="absolute top-0 ml-3" style="top:10px">
         <svg
           fill="currentColor"
-          class="text-gray-500 h-5 w-5"
+          class="text-mongoose h-5 w-5"
           viewBox="0 0 24 24"
           width="24"
           height="24"
@@ -57,13 +57,11 @@
             :class="{ 'search-highlighted': index === highlightedIndex }"
           >
             <div class="flex justify-between">
-              <div class="text-gray-700">
+              <div>
                 {{ result.item.title }}
               </div>
 
-              <div
-                class="text-gray-600 text-center uppercase text-sm font-normal"
-              >
+              <div class="text-center uppercase text-sm font-normal">
                 {{ result.item.type }}
               </div>
             </div>
@@ -202,12 +200,12 @@ export default {
 
 <style scoped lang="postcss">
 .search-result {
-  @apply bg-white border-b border-gray-400 text-lg cursor-pointer p-4 search-hover no-underline leading-tight;
+  @apply bg-darkLinen border-b border-mongoose text-lg cursor-pointer p-4  no-underline leading-tight;
   .title {
     @apply block text-lg font-bold my-1;
   }
   .summary {
-    @apply block font-normal text-sm my-1 text-black;
+    @apply block font-normal text-sm my-1 text-linen;
   }
 }
 .fade-enter-active,
@@ -220,10 +218,10 @@ export default {
 }
 
 .search-highlighted {
-  @apply bg-green-100;
+  @apply bg-cuttySark text-linen;
 }
 
 .search-hover {
-  @apply bg-green-200;
+  @apply bg-linen;
 }
 </style>

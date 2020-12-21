@@ -9,7 +9,7 @@
           Living Fire
         </div>
         <div class="title flex justify-between items-center">
-          <h1 class="text-3xl font-bold leading-tight  align-middle">
+          <h1 class="text-5xl font-bold leading-tight  align-middle mt-2">
             {{ $page.work.title }}
             <span
               v-if="$page.work.adaptedFrom"
@@ -28,9 +28,7 @@
           </span>
         </div>
         <div v-if="$page.work.creators.length > 0" class="creators mt-2">
-          <div
-            class="text-xl uppercase tracking-wide te text-gray-600 border-t-2 mt-6 mb-3 pt-2"
-          >
+          <div class="label">
             {{ $page.work.creators.length > 1 ? "Creators" : "Creator" }}
           </div>
           <span
@@ -48,9 +46,7 @@
         </div>
 
         <div v-if="$page.work.tags" class="publishers my-6">
-          <div
-            class="text-xl uppercase tracking-wide te text-gray-600 border-t-2  mt-6 mb-3 pt-2"
-          >
+          <div class="label">
             Tags
           </div>
           <span
@@ -66,9 +62,7 @@
       </div>
 
       <div v-if="$page.work.producers.length > 0" class="producers mt-2">
-        <div
-          class="text-xl uppercase tracking-wide te text-gray-600 border-t-2  mt-6 mb-3 pt-2"
-        >
+        <div class="label">
           {{ $page.work.producers.length > 1 ? "Producers" : "Producer" }}
         </div>
         <span
@@ -80,9 +74,7 @@
         </span>
       </div>
       <div v-if="$page.work.publishers.length > 0" class="publishers mt-2">
-        <div
-          class="text-xl uppercase tracking-wide te text-gray-600 border-t-2  mt-6 mb-3 pt-2"
-        >
+        <div class="label">
           {{ $page.work.publishers.length > 1 ? "Publishers" : "Publisher" }}
         </div>
         <span
@@ -162,6 +154,9 @@ main {
   }
   .source a:not(.btn) {
     @apply text-gray-800 font-normal leading-normal;
+  }
+  .label {
+    @apply text-sm uppercase tracking-wide font-bold border-t-2 mt-6 mb-3 pt-2;
   }
 }
 </style>

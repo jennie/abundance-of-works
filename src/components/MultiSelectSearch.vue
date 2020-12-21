@@ -3,29 +3,25 @@
     <div class="flex flex-wrap">
       <div class="md:w-full lg:w-1/3">
         <div class="mt-4" v-for="tag in $static.allTag.edges" :key="tag.id">
-            <div class="relative flex items-start">
-                            <div class="absolute flex items-center h-5">
-
+          <div class="relative flex items-start">
+            <div class="absolute flex items-center h-5">
               <input
                 type="checkbox"
-                  :id="`tag-checkbox-${tag.node.name}`"
-                  class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+                :id="`tag-checkbox-${tag.node.name}`"
+                class="form-checkbox h-4 w-4 text-timber transition duration-150 ease-in-out"
                 @change="performSearch"
                 :value="`${tag.node.id}`"
                 v-model="tagSelected"
               />
-              </div>
-              <div class="pl-7 text-sm leading-5">
-                <label
-                  :for="`tag-checkbox-${tag.node.name}`"
-                  class="text-xl font-regular text-gray-700"
-                  >{{ tag.node.name }}
-                </label>
-              </div>
-            </label>
+            </div>
+            <div class="pl-7 text-sm leading-5">
+              <label
+                :for="`tag-checkbox-${tag.node.name}`"
+                class="text-xl font-regular text-gray-700"
+                >{{ tag.node.name }}
+              </label>
+            </div>
           </div>
-
-          
         </div>
 
         <div

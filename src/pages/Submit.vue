@@ -28,10 +28,10 @@
         <div>
           <div>
             <div>
-              <h3 class="text-2xl leading-6 font-medium text-gray-900 ">
+              <h3 class="text-2xl leading-6 font-medium ">
                 Submit a work to the database
               </h3>
-              <p class="mt-1 text-sm leading-5 text-gray-500">
+              <p class="mt-1 text-sm leading-5">
                 This information will be reviewed by Ad Hoc Collective. Thank
                 you for taking the time to contribute!
               </p>
@@ -40,10 +40,7 @@
               class="mt-6 grid grid-cols-1 row-gap-6 col-gap-4 sm:grid-cols-6"
             >
               <div class="sm:col-span-3">
-                <label
-                  for="title"
-                  class="block text-sm font-medium leading-5 text-gray-700"
-                >
+                <label for="title" class="block text-sm font-medium leading-5">
                   Title
                 </label>
                 <div class="mt-1 flex rounded-md shadow-sm">
@@ -117,7 +114,7 @@
               <div class="sm:col-span-3">
                 <label
                   for="publishers"
-                  class="block text-sm font-medium leading-5 text-gray-700"
+                  class="block text-sm font-medium leading-5"
                 >
                   Publisher(s)
                 </label>
@@ -136,10 +133,10 @@
 
           <div class="mt-8 border-t border-gray-200 pt-8">
             <div>
-              <h3 class="text-lg leading-6 font-medium text-gray-900">
+              <h3 class="text-lg leading-6 font-medium">
                 Tags
               </h3>
-              <p class="mt-1 text-sm leading-5 text-gray-500">
+              <p class="mt-1 text-sm leading-5">
                 Select any demographic/identity descriptors that apply to this
                 work and its creators.
               </p>
@@ -159,7 +156,7 @@
                         name="tags[]"
                         v-model="tags"
                         type="checkbox"
-                        class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+                        class="form-checkbox h-4 w-4 text-timber transition duration-150 ease-in-out"
                       />
                     </div>
                     <div class="pl-7 text-sm leading-5">
@@ -213,7 +210,7 @@
             <span class="ml-3 inline-flex rounded-md shadow-sm">
               <button
                 type="submit"
-                class="inline-flex justify-center py-2 px-4 border border-transparent text-xl leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
+                class="inline-flex justify-center py-2 px-4 border border-transparent text-xl leading-5 font-medium rounded-md text-white bg-timber hover:bg-darkSeaGreen focus:outline-none focus:border-timber focus:ring-timber active:bg-timber transition duration-150 ease-in-out"
               >
                 Submit
               </button>

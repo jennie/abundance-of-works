@@ -1,44 +1,30 @@
 @tailwind base;
-
-
+@tailwind components;
+@tailwind utilities;
+@import "fonts.css";
 
 /* purgecss start ignore */
-
-svg {
-  margin: 0;
-}
-
-#dmg-logo {
-  @apply w-32;
-  margin: 0 auto;
-
-  path {
-    fill: #000
-  }
-}
 
 h1,
 h2,
 h3,
 h4 {
-  @apply font-sans;
+  @apply font-display;
+}
+
+p {
+  a {
+    @apply underline;
+  }
 }
 
 .markdown-body {
   p:last-child {
-    @apply mb-0
+    @apply mb-0;
   }
 }
 
 main {
-  /* a:not(.btn) {
-    @apply text-gray-700 underline;
-  }
-
-  a:hover:not(.btn) {
-    @apply text-black;
-  } */
-
   p {
     @apply mb-3;
   }
@@ -48,60 +34,14 @@ main {
   transition: background-color 0.25s;
 }
 
-nav a {
-  @apply text-indigo-500 font-medium;
-
-}
-
-a {
-  @apply text-gray-700 font-medium;
-}
-
-a:hover {
-  @apply text-black;
-}
-
-nav .active--exact {
-  @apply border-indigo-400 border-b-2;
-}
-
 .container-inner {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-@media (min-width: 640px) {
-  .container-inner {
-    max-width: 640px;
+  @apply px-6;
+  @screen sm {
+    @apply max-w-screen-sm;
   }
-}
-
-@media (min-width: 768px) {
-  .container-inner {
-    max-width: 768px;
+  @screen md {
+    @apply max-w-screen-sm;
   }
-}
-
-@media (min-width: 1024px) {
-  .container-inner {
-    max-width: 800px;
-  }
-}
-
-.search-highlighted {
-  background: #f0fff4;
-}
-
-.search-hover:hover {
-  background: #f0fff4;
-}
-
-
-
-.checkmark {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%2229%22%20height%3D%2229%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M4.427%2024.93A14.5%2014.5%200%201%201%2024.93%204.427c5.495%205.69%205.416%2014.733-.177%2020.326s-14.637%205.672-20.326.177z%22%20fill%3D%22%232E855A%22/%3E%3Cpath%20fill%3D%22%23FFF%22%20d%3D%22M10.234%2012.803l3.67%203.253L20.766%2010%2023%2012l-9.096%208L8%2014.789l2.234-2z%22/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  @apply pl-10;
 }
 
 .responsive-container {
@@ -119,9 +59,11 @@ nav .active--exact {
   border: 0;
 }
 
+.prose {
+  color: currentColor;
+  a {
+    color: currentColor;
+  }
+}
+
 /* purgecss end ignore */
-
-
-@tailwind components;
-
-@tailwind utilities;

@@ -1,5 +1,4 @@
-// This is the main.js file. Import global CSS and scripts here.
-// The Client API can be used here. Learn more: gridsome.org/docs/client-api
+require("~/css/main.css");
 
 import DefaultLayout from "~/layouts/Default.vue";
 
@@ -9,10 +8,10 @@ import VueCharts from "vue-chartjs";
 
 export default function(Vue, { router, head, isClient }) {
   head.htmlAttrs = { lang: "en" };
-  head.bodyAttrs = {
-    class: "text-base flex flex-col min-h-screen text-gray-900 antialiased",
-  };
 
+  head.bodyAttrs = {
+    class: "min-h-screen subpixel-antialiased font-body bg-linen text-timber",
+  };
   // Set default layout as a global component
   Vue.component("Layout", DefaultLayout);
   Vue.use(VueCharts);
@@ -42,13 +41,10 @@ export default function(Vue, { router, head, isClient }) {
 
   head.link.push({
     rel: "stylesheet",
-    href:
-      "https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700|Roboto:400,400i,900&display=swap",
+    href: "https://fonts.googleapis.com/css?Roboto:400,400i,900&display=swap",
   });
-  head.link.push({
-    rel: "stylesheet",
-    href: "https://rsms.me/inter/inter.css",
-  });
+  head.htmlAttrs = { lang: "en" };
+
   Vue.use(VueLuxon, {
     clientZone: "America/Toronto",
     serverZone: "America/Toronto",

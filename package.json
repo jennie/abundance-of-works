@@ -13,7 +13,10 @@
     "@gridsome/source-filesystem": "^0.6.2",
     "@gridsome/transformer-remark": "^0.3.4",
     "@gridsome/vue-remark": "^0.1.10",
+    "@tailwindcss/forms": "^0.2.1",
+    "@tailwindcss/typography": "^0.3.1",
     "@tailwindcss/ui": "^0.3.1",
+    "autoprefixer": "^10.1.0",
     "axios": "^0.19.2",
     "chart.js": "^2.9.4",
     "fuse.js": "^6.4.3",
@@ -25,6 +28,7 @@
     "luxon": "^1.25.0",
     "marked": "^1.2.7",
     "minimist": "^0.2.1",
+    "postcss": "^8.2.1",
     "postcss-nested": "^4.2.3",
     "remark-footnotes": "^1.0.0",
     "slugify": "^1.4.6",
@@ -35,6 +39,6 @@
     "vue-scrollto": "^2.20.0"
   },
   "devDependencies": {
-    "tailwindcss": "^1.9.6"
+    "tailwindcss": "^2.0.2"
   }
 }

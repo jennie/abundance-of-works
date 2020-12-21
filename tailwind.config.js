@@ -2,9 +2,24 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   purge: ["./src/**/*.vue", "./**/main.js"],
-  plugins: [require("@tailwindcss/ui")],
+  plugins: [
+    require("@tailwindcss/ui"),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/forms"),
+  ],
   theme: {
     extend: {
+      colors: {
+        transparent: "transparent",
+        current: "currentColor",
+        linen: "#F8F2E8",
+        darkLinen: "#E8DDCA",
+        mongoose: "#B59E7D",
+        pixie: "#B5CAA5",
+        darkSeaGreen: "#8FBC8F",
+        cuttySark: "#56887D",
+        timber: "#34403A",
+      },
       spacing: {
         "80": "20rem",
         "108": "27rem",
@@ -17,17 +32,9 @@ module.exports = {
       padding: "1rem",
     },
     fontFamily: {
-      sans: ["Inter var", ...defaultTheme.fontFamily.sans],
-
-      serif: ["Georgia", "Cambria", '"Times New Roman"', "Times", "serif"],
-      mono: [
-        '"PT Mono"',
-        "Monaco",
-        "Consolas",
-        '"Liberation Mono"',
-        '"Courier New"',
-        "monospace",
-      ],
+      sans: ["Roboto"],
+      body: ["Roboto"],
+      display: ["Editorial New"],
     },
   },
 };
