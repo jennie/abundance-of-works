@@ -13,18 +13,24 @@
         :currentPage="$page.allCreator.pageInfo.currentPage"
       />
       <div class="divide-y divide-darkLinen">
-        <div
-          v-for="creator in $page.allCreator.edges"
-          :key="creator.id"
-          class="py-4"
-        >
-          <h2 class="text-2xl">
-            <g-link :to="creator.node.path" class="underline"
-              ><span class="text-2xl font-display  font-bold text-left mr-2">{{
-                creator.node.name
-              }}</span></g-link
+        <div v-for="creator in $page.allCreator.edges" :key="creator.id">
+          <g-link
+            :to="creator.node.path"
+            class="py-4 flex items-baseline flex-wrap justify-start "
+          >
+            <span
+              class="text-2xl underline font-display underline font-bold text-left mr-2"
+              >{{ creator.node.name }}</span
             >
-          </h2>
+            <div class="text-base font-normal">
+              <template v-for="(value, index) in creator.node.works">
+                <template v-if="index > 0"
+                  >,
+                </template>
+                <span :key="index">{{ value.title }}</span>
+              </template>
+            </div>
+          </g-link>
         </div>
       </div>
 
@@ -55,12 +61,8 @@ query ($page: Int) {
       node {
         name
         path
-        works {
+        works(limit: 3) {
           title
-          path
-          year {
-            name
-          }
         }
       }
     }
