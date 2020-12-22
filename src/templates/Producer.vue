@@ -5,7 +5,7 @@
         <h1 class="text-3xl font-bold leading-tight">
           {{ $page.producer.name }}
         </h1>
-        <div class="divide-y divide-gray-400">
+        <div class="divide-y divide-darkLinen">
           <div v-for="work in $page.producer.works" :key="work.id">
             <div class="text-xl py-4">
               <g-link :to="work.path">

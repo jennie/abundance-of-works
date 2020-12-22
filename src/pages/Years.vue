@@ -1,10 +1,15 @@
 <template>
   <Layout>
     <div class="container-inner mx-auto py-16">
-      <div class="divide-y divide-gray-400">
+      <h1 class="text-5xl font-bold leading-tight  align-middle mt-2 mb-6">
+        All Years
+      </h1>
+      <div class="flex flex-wrap md:grid md:grid-cols-6 gap-10">
         <div v-for="year in $page.allYear.edges" :key="year.id" class="py-4">
           <h2 class="text-2xl">
-            <g-link :to="year.node.path">{{ year.node.name }}</g-link>
+            <g-link :to="year.node.path" class="font-bold underline">{{
+              year.node.name
+            }}</g-link>
           </h2>
         </div>
       </div>
@@ -26,7 +31,7 @@ query ($page: Int)  {
     siteName
     siteUrl
   }
-  allYear(sortBy: "Name", order: DESC, perPage: 10, page: $page) @paginate {
+  allYear(sortBy: "Name", order: DESC, perPage: 50, page: $page) @paginate {
     totalCount
     pageInfo {
       totalPages

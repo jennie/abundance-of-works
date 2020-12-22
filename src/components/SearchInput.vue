@@ -1,12 +1,12 @@
 <template>
-  <div class="relative mx-auto w-80">
+  <div class="flex-1 flex items-center justify-center lg:justify-end">
     <search-focus @keyup="focusSearch"></search-focus>
 
-    <div class="relative w-80">
+    <div class="max-w-lg w-full lg:max-w-xs">
       <input
         type="text"
         placeholder="Search"
-        class="block w-full pl-10 pr-3 py-2 border border-transparent rounded-md leading-5 bg-timber text-timber placeholder-linen focus:placeholder-timber focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900 sm:text-sm"
+        class="block w-full pl-10 pr-3 py-2 border  border-mongoose rounded-md leading-5 bg-timber text-timber placeholder-linen focus:placeholder-timber focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900 sm:text-sm"
         v-model="query"
         @input="softReset"
         @keyup="performSearch"
@@ -44,7 +44,7 @@
     <transition name="fade">
       <div
         v-if="query.length > 0 && searchResultsVisible"
-        class="normal-case absolute border left-0 right-0 w-108 text-left mb-4 mt-2 rounded-lg shadow overflow-hidden z-10 overflow-y-auto no-underline"
+        class="normal-case absolute border top-10 left-0 text-left right-0 mb-4 rounded-lg shadow overflow-hidden z-10 overflow-y-auto no-underline bg-linen"
         style="max-height: 32rem"
       >
         <div class="flex flex-col" ref="results">

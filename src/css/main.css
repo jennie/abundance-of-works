@@ -35,12 +35,18 @@ main {
 }
 
 .container-inner {
-  @apply px-6;
+  @apply px-6 max-w-screen-sm;
   @screen sm {
-    @apply max-w-screen-sm;
+    @apply max-w-full;
   }
   @screen md {
-    @apply max-w-screen-sm;
+    @apply max-w-screen-md;
+  }
+  @screen lg {
+    @apply max-w-screen-lg;
+  }
+  @screen xl {
+    @apply max-w-screen-xl;
   }
 }
 

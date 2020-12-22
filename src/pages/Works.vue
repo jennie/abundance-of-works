@@ -1,13 +1,26 @@
 <template>
   <Layout>
     <div class="container-inner mx-auto py-16">
-      <div class="divide-y divide-gray-400">
+      <h1 class="text-5xl font-bold leading-tight  align-middle mt-2">
+        All Works
+      </h1>
+      <pagination-posts
+        class="py-8"
+        v-if="$page.allWork.pageInfo.totalPages > 1"
+        base="/works"
+        :totalPages="$page.allWork.pageInfo.totalPages"
+        :currentPage="$page.allWork.pageInfo.currentPage"
+      />
+      <div class="divide-y divide-darkLinen">
         <div v-for="work in $page.allWork.edges" :key="work.id">
           <g-link
             :to="work.node.path"
-            class="py-4 flex items-baseline flex-wrap justify-start"
+            class="py-4 flex items-baseline flex-wrap justify-start "
           >
-            <span class="text-2xl text-left mr-2">{{ work.node.title }}</span>
+            <span
+              class="text-2xl font-display underline font-bold text-left mr-2"
+              >{{ work.node.title }}</span
+            >
 
             <div class="text-base font-normal">
               <template v-for="(value, index) in work.node.creators">
@@ -19,14 +32,6 @@
             </div>
           </g-link>
         </div>
-
-        <pagination-posts
-          class="pt-8"
-          v-if="$page.allWork.pageInfo.totalPages > 1"
-          base="/works"
-          :totalPages="$page.allWork.pageInfo.totalPages"
-          :currentPage="$page.allWork.pageInfo.currentPage"
-        />
       </div>
     </div>
   </Layout>
@@ -35,7 +40,7 @@
 <page-query>
 query Works ($page: Int) {
 
-  allWork(sortBy: "title", order: DESC, perPage: 10, page: $page) @paginate {
+  allWork(sortBy: "title", order: DESC, perPage: 20, page: $page) @paginate {
     totalCount
     pageInfo {
       totalPages
@@ -69,16 +74,7 @@ query Works ($page: Int) {
 
 
 </page-query>
-<style lang="postcss">
-main {
-  .post-link {
-    @apply text-gray-800 font-normal leading-normal;
-  }
-  .source a:not(.btn) {
-    @apply text-gray-800 font-normal leading-normal;
-  }
-}
-</style>
+<style lang="postcss"></style>
 <script>
 import PaginationPosts from "~/components/PaginationPosts";
 

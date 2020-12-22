@@ -1,14 +1,29 @@
 <template>
   <Layout>
     <div class="container-inner mx-auto py-16">
-      <div class="divide-y divide-gray-400">
+      <h1 class="text-5xl font-bold leading-tight  align-middle mt-2">
+        All Creators
+      </h1>
+
+      <pagination-posts
+        class="py-8"
+        v-if="$page.allCreator.pageInfo.totalPages > 1"
+        base="/creators"
+        :totalPages="$page.allCreator.pageInfo.totalPages"
+        :currentPage="$page.allCreator.pageInfo.currentPage"
+      />
+      <div class="divide-y divide-darkLinen">
         <div
           v-for="creator in $page.allCreator.edges"
           :key="creator.id"
           class="py-4"
         >
           <h2 class="text-2xl">
-            <g-link :to="creator.node.path">{{ creator.node.name }}</g-link>
+            <g-link :to="creator.node.path" class="underline"
+              ><span class="text-2xl font-display  font-bold text-left mr-2">{{
+                creator.node.name
+              }}</span></g-link
+            >
           </h2>
         </div>
       </div>
@@ -30,7 +45,7 @@ query ($page: Int) {
     siteName
     siteUrl
   }
-  allCreator(sortBy: "name", order: DESC, perPage: 10, page: $page) @paginate {
+  allCreator(sortBy: "name", order: DESC, perPage: 20, page: $page) @paginate {
     totalCount
     pageInfo {
       totalPages

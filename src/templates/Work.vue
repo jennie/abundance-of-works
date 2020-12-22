@@ -52,9 +52,9 @@
           <span
             v-for="tag in $page.work.tags"
             :key="tag.id"
-            class="tag bg-gray-200 rounded-full px-2 py-1 mr-4 hover:bg-blue-400 no-underline text-black no-underline"
+            class="tag bg-timber rounded-full px-2 py-1 mr-4 hover:bg-gray-900 no-underline text-linen"
           >
-            <g-link :to="tag.path" class=" text-black no-underline">
+            <g-link :to="tag.path" class=" text-linen no-underline">
               {{ tag.name }}
             </g-link>
           </span>
@@ -68,7 +68,7 @@
         <span
           v-for="producer in $page.work.producers"
           :key="producer.id"
-          class="tag bg-red-200 rounded-full px-2 py-1 mr-4 hover:bg-red-400 no-underline "
+          class="tag bg-pixie rounded-full px-2 py-1 mr-4 hover:bg-darkSeaGreen no-underline "
         >
           <g-link :to="producer.path">{{ producer.name }}</g-link>
         </span>

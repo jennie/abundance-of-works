@@ -9,7 +9,7 @@
             <h1
               class="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
             >
-              <div class="text-6xl font-display leading-tight">
+              <div class="text-4xl lg:text-6xl font-display leading-tight">
                 <span class="block xl:inline">
                   <span class="font-bold"
                     >Abundance honours past, present, and future creators.</span

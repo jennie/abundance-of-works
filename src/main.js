@@ -38,7 +38,6 @@ export default function(Vue, { router, head, isClient }) {
     name: "author",
     content: "AD HOC Assembly",
   });
-
   head.link.push({
     rel: "preconnect",
     href: "https://fonts.gstatic.com",

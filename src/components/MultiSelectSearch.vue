@@ -45,7 +45,7 @@
           </p>
         </div>
         <transition name="fade" v-else-if="tagSelected.length !== 0">
-          <div class="divide-y divide-gray-400">
+          <div class="divide-y divide-darkLinen">
             <a
               v-for="(result, index) in tagSearchResults"
               :key="index"
