@@ -32,8 +32,8 @@ module.exports = {
       padding: "1rem",
     },
     fontFamily: {
-      sans: ["Roboto"],
-      body: ["Roboto"],
+      sans: ["Barlow"],
+      body: ["Barlow"],
       display: ["Editorial New"],
     },
   },

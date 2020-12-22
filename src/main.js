@@ -40,9 +40,15 @@ export default function(Vue, { router, head, isClient }) {
   });
 
   head.link.push({
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css?Roboto:400,400i,900&display=swap",
+    rel: "preconnect",
+    href: "https://fonts.gstatic.com",
   });
+  head.link.push({
+    rel: "stylesheet",
+    href:
+      "https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap",
+  });
+
   head.htmlAttrs = { lang: "en" };
 
   Vue.use(VueLuxon, {
