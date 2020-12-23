@@ -1,18 +1,26 @@
 <template>
   <Layout>
     <div class="container-inner mx-auto py-16">
-      <div class="">
-        <h1 class="text-3xl font-bold leading-tight">
+      <div class="border-t-4 border-timber">
+        <div class="mt-2 text-xl font-bold mb-3">
+          All works by publisher
+        </div>
+        <h1 class="text-5xl font-bold leading-tight">
           {{ $page.publisher.name }}
         </h1>
+      </div>
 
-        <div v-for="work in $page.publisher.works" :key="work.id">
-          <div class="text-2xl">
-            <g-link :to="work.path">
+      <div class="divide-y divide-darkLinen">
+        <ul v-for="work in $page.publisher.works" :key="work.id">
+          <li class="text-xl py-4">
+            <g-link :to="work.path" class="underline">
               {{ work.title }}
             </g-link>
-          </div>
-        </div>
+            <span v-if="work.year.length" class="ml-2"
+              >({{ work.year[0].name }})</span
+            >
+          </li>
+        </ul>
       </div>
     </div>
   </Layout>
@@ -25,6 +33,9 @@ query ($id: ID) {
     works {
       title
       path
+      year {
+        name
+      }      
     }
   }
 }

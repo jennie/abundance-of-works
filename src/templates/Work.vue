@@ -36,7 +36,7 @@
             :key="creator.id"
             class="py-1 mr-4 text-2xl"
           >
-            <g-link :to="creator.path">
+            <g-link :to="creator.path" class="underline">
               {{ creator.name }}
             </g-link>
           </span>
@@ -156,7 +156,7 @@ main {
     @apply text-gray-800 font-normal leading-normal;
   }
   .label {
-    @apply text-sm uppercase tracking-wide font-bold border-t-2 mt-6 mb-3 pt-2;
+    @apply text-sm uppercase tracking-wide font-bold border-t-2 border-darkLinen mt-6 mb-3 pt-2;
   }
 }
 </style>

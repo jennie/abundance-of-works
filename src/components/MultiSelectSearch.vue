@@ -1,84 +1,113 @@
 <template>
-  <div class=" mx-auto">
-    <div class="flex flex-wrap">
-      <div class="md:w-full lg:w-1/3">
-        <div class="mt-4" v-for="tag in $static.allTag.edges" :key="tag.id">
-          <div class="relative flex items-start">
-            <div class="absolute flex items-center h-5">
+  <div class="container-inner ">
+    <div class="flex justify-around">
+      <div class="relative flex flex-wrap">
+        <div v-for="tag in $static.allTag.edges" :key="tag.id" class="m-1">
+          <label :for="`tag-checkbox-${tag.node.name}`">
+            <div
+              class="text-lg leading-5 px-3 py-2 rounded-full cursor-pointer transition duration-150
+              ease-in-out"
+              :class="{
+                'bg-darkLinen hover:bg-pixie': !tagSelected.includes(
+                  tag.node.id
+                ),
+                'bg-pixie hover:bg-darkSeaGreen': tagSelected.includes(
+                  tag.node.id
+                ),
+              }"
+            >
+              {{ tag.node.name }}
               <input
                 type="checkbox"
                 :id="`tag-checkbox-${tag.node.name}`"
-                class="form-checkbox h-4 w-4 text-timber transition duration-150 ease-in-out"
+                class="hidden appearance-none checked:bg-cuttySark checked:border-transparent"
                 @change="performSearch"
                 :value="`${tag.node.id}`"
                 v-model="tagSelected"
               />
             </div>
-            <div class="pl-7 text-sm leading-5">
-              <label
-                :for="`tag-checkbox-${tag.node.name}`"
-                class="text-xl font-regular text-gray-700"
-                >{{ tag.node.name }}
-              </label>
-            </div>
-          </div>
+          </label>
         </div>
 
         <div
           v-if="tagSelected.length > 0"
-          class="top-0 right-0 text-2xl mr-3 cursor-pointer text-gray-600 hover:text-gray-800"
-          style="top:2px;"
+          class=" mt-1 text-center text-2xl mr-3 cursor-pointer text-black hover:text-red-700 hover:bg-red-300 rounded-full h-5 w-5 leading-4 bg-red-200"
           @click="reset"
         >
-          &times;
+          <span class="right-0 left-0 text-center mx-auto relative"
+            >&times;</span
+          >
         </div>
       </div>
-
-      <div class="md:w-full lg:w-2/3">
-        <div
-          v-if="tagSearchResults.length === 0 && tagSelected.length > 0"
-          class="bg-form font-normal w-full cursor-pointer p-4 bg-gray-100 rounded shadow-md"
-        >
-          <p class="my-0">
-            Nothing matches all of those tags. Try selecting fewer, or a
-            different combination.
-          </p>
-        </div>
-        <transition name="fade" v-else-if="tagSelected.length !== 0">
-          <div class="divide-y divide-darkLinen">
-            <a
-              v-for="(result, index) in tagSearchResults"
-              :key="index"
-              :href="result.item.path"
-              @click="reset"
-              class="py-4 flex items-baseline flex-wrap justify-start"
+    </div>
+    <div class="pt-6">
+      <div
+        v-if="tagSearchResults.length === 0 && tagSelected.length > 0"
+        class="bg-form font-normal w-full  p-4 bg-gray-100 rounded shadow-md"
+      >
+        <p class="my-0">
+          Nothing matches all of those tags. Try selecting fewer, or a different
+          combination.
+          <span @click="reset" class="cursor-pointer underline">
+            Clear selections.
+          </span>
+        </p>
+      </div>
+      <div
+        v-else-if="tagSearchResults.length === 0"
+        class="text-center text-2xl mx-auto"
+      >
+        To filter by tags on a work, click one or two above.
+      </div>
+      <div name="fade" v-else-if="tagSelected.length !== 0">
+        <div class="border-t-4 border-timber">
+          <div class="mt-2 text-xl font-bold mb-3">
+            All works tagged
+          </div>
+          <h1 class="text-5xl font-bold leading-tight">
+            <span
+              v-for="tag in tagSelectedNames"
+              class="tagAppend"
+              :key="tag.id"
             >
-              <span class="text-2xl text-left mr-2">{{
-                result.item.title
-              }}</span>
-              <div class="text-base font-normal">
-                <template v-for="(value, index) in result.item.creators">
-                  <template v-if="index > 0"
-                    >,
-                  </template>
-                  <span :key="index">{{ value.name }}</span>
+              {{ tag.name }}
+            </span>
+          </h1>
+        </div>
+        <div class="divide-y divide-darkLinen">
+          <a
+            v-for="(result, index) in tagSearchResults"
+            :key="index"
+            :href="result.item.path"
+            @click="reset"
+            class="py-4 flex items-baseline flex-wrap justify-start"
+          >
+            <span
+              class="text-2xl font-display underline font-bold text-left mr-2"
+              >{{ result.item.title }}</span
+            >
+            <div class="text-base font-normal">
+              <template v-for="(value, index) in result.item.creators">
+                <template v-if="index > 0"
+                  >,
                 </template>
-              </div>
-              <!-- <span
+                <span :key="index">{{ value.name }}</span>
+              </template>
+            </div>
+            <!-- <span
                   v-for="tag in result.item.tags"
                   :key="tag.id"
                   class="rounded font-normal bg-teal-100 px-2 mr-2"
                 >
                   {{ tag.name }}
                 </span> -->
-            </a>
+          </a>
 
-            <div
-              v-if="tagSearchResults.length === 0"
-              class="bg-form font-normal w-full border-b cursor-pointer p-4"
-            ></div>
-          </div>
-        </transition>
+          <div
+            v-if="tagSearchResults.length === 0"
+            class="bg-form font-normal w-full border-b cursor-pointer p-4"
+          ></div>
+        </div>
       </div>
     </div>
   </div>
@@ -121,6 +150,17 @@ import Fuse from "fuse.js";
 
 export default {
   computed: {
+    tagSelectedNames() {
+      let result = [];
+      const allTags = this.$static.allTag.edges.map((edge) => edge.node);
+
+      this.tagSelected.forEach((tagId) => {
+        const tag = allTags.find(({ id }) => id === tagId);
+        result.push({ name: tag.name });
+      });
+      return result;
+    },
+
     pages() {
       let result = [];
       const allWorks = this.$static.allWork.edges.map((edge) => edge.node);
@@ -175,6 +215,15 @@ export default {
 </script>
 
 <style scoped lang="postcss">
+.tagAppend {
+  &::after {
+    content: "&";
+    @apply font-medium;
+  }
+  &:last-child::after {
+    content: "";
+  }
+}
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s;

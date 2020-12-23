@@ -23,7 +23,7 @@
           <div class="px-5 py-2">
             <g-link
               to="/about"
-              class="text-base leading-6 hover:underline hover:text-gray-900"
+              class="text-base leading-6 hover:underline hover:text-cuttySark underline"
             >
               About
             </g-link>
@@ -31,7 +31,7 @@
           <div class="px-5 py-2">
             <g-link
               to="/submit"
-              class="text-base leading-6 hover:underline hover:text-gray-900"
+              class="text-base leading-6 hover:underline hover:text-cuttySark underline"
             >
               Submit a Work
             </g-link>

@@ -14,10 +14,10 @@
         @keydown.up.prevent="highlightPrev"
         @keydown.down.prevent="highlightNext"
         @keyup.enter="gotoLink"
+        @blur="searchResultsVisible = false"
         @focus="searchResultsVisible = true"
         ref="search"
       />
-      <!-- @blur="searchResultsVisible = false" -->
       <div class="absolute top-0 ml-3" style="top:10px">
         <svg
           fill="currentColor"
@@ -48,10 +48,10 @@
         style="max-height: 32rem"
       >
         <div class="flex flex-col" ref="results">
-          <a
+          <g-link
             v-for="(result, index) in results"
             :key="index"
-            :href="result.item.path"
+            :to="result.item.path"
             @click="reset"
             class="search-result"
             :class="{ 'search-highlighted': index === highlightedIndex }"
@@ -65,7 +65,7 @@
                 {{ result.item.type }}
               </div>
             </div>
-          </a>
+          </g-link>
 
           <div
             v-if="results.length === 0"
@@ -186,7 +186,7 @@ export default {
     },
     gotoLink() {
       if (this.results[this.highlightedIndex]) {
-        window.location = this.results[this.highlightedIndex].item.url;
+        window.location = this.results[this.highlightedIndex].item.path;
       }
     },
     focusSearch(e) {

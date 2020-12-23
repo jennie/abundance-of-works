@@ -19,7 +19,7 @@
             class="py-4 flex items-baseline flex-wrap justify-start "
           >
             <span
-              class="text-2xl underline font-display underline font-bold text-left mr-2"
+              class="text-2xl underline font-display font-bold text-left mr-2"
               >{{ creator.node.name }}</span
             >
             <div class="text-base font-normal">

@@ -28,34 +28,37 @@
         <div>
           <div>
             <div>
-              <h3 class="text-2xl leading-6 font-medium ">
-                Submit a work to the database
-              </h3>
-              <p class="mt-1 text-sm leading-5">
-                This information will be reviewed by Ad Hoc Collective. Thank
-                you for taking the time to contribute!
-              </p>
+              <div class="border-t-4 border-timber">
+                <div class="mt-2 text-xl font-bold mb-3">
+                  Submit a work to the database
+                </div>
+                <p class="mt-1 text-lg leading-5">
+                  This information will be reviewed by Ad Hoc Collective. Thank
+                  you for taking the time to contribute!
+                </p>
+              </div>
             </div>
-            <div
-              class="mt-6 grid grid-cols-1 row-gap-6 col-gap-4 sm:grid-cols-6"
-            >
+            <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
               <div class="sm:col-span-3">
-                <label for="title" class="block text-sm font-medium leading-5">
+                <label
+                  for="title"
+                  class="block text-lg font-bold text-timber leading-5"
+                >
                   Title
                 </label>
-                <div class="mt-1 flex rounded-md shadow-sm">
+                <div class="mt-1 flex">
                   <input
                     id="title"
                     v-model="formData.title"
                     name="title"
-                    class="flex-1 form-input block w-full min-w-0 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                    class="text-xl py-3 px-4 block w-full shadow-sm focus:ring-darkSeaGreen focus:border-darkSeaGreen border-pixie  rounded-md"
                   />
                 </div>
               </div>
               <div class="sm:col-span-3">
                 <label
                   for="year"
-                  class="block text-sm font-medium leading-5 text-gray-700"
+                  class="block text-lg  leading-5 text-timber font-bold"
                 >
                   Year
                 </label>
@@ -64,7 +67,7 @@
                     id="year"
                     v-model="formData.year"
                     name="year"
-                    class="flex-1 form-input block w-full min-w-0 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                    class="text-xl py-3 px-4 block w-full shadow-sm focus:ring-darkSeaGreen focus:border-darkSeaGreen border-pixie rounded-md"
                   />
                 </div>
               </div>
@@ -72,7 +75,7 @@
               <div class="sm:col-span-6">
                 <label
                   for="about"
-                  class="block text-sm font-medium leading-5 text-gray-700"
+                  class="block text-lg font-medium leading-5 text-timber font-bold"
                 >
                   Creator(s)
                 </label>
@@ -82,10 +85,10 @@
                     v-model="formData.creators"
                     name="creators"
                     rows="2"
-                    class="form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                    class="py-3 px-4 block w-full shadow-sm focus:ring-darkSeaGreen focus:border-darkSeaGreen border-pixie rounded-md"
                   ></textarea>
                 </div>
-                <p class="mt-2 text-sm text-gray-500">
+                <p class="mt-2 text-lg text-mongoose">
                   Separate multiple creators with a comma. E.g.:
                   <em>nisha ahuja, Subtle Vigilance Collective</em>
                 </p>
@@ -93,7 +96,7 @@
               <div class="sm:col-span-3">
                 <label
                   for="producers"
-                  class="block text-sm font-medium leading-5 text-gray-700"
+                  class="block text-lg font-medium leading-5 text-timber font-bold"
                 >
                   Producer(s)
                 </label>
@@ -103,10 +106,10 @@
                     v-model="formData.producers"
                     name="producers"
                     rows="2"
-                    class="form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                    class="py-3 px-4 block w-full shadow-sm focus:ring-darkSeaGreen focus:border-darkSeaGreen border-pixie rounded-md"
                   ></textarea>
                 </div>
-                <p class="mt-2 text-sm text-gray-500">
+                <p class="mt-2 text-lg text-mongoose">
                   Separate multiple producers with a comma. E.g.:
                   <em>Buddies in Bad Times Theatre, Theatre Passe Muraille</em>
                 </p>
@@ -114,7 +117,7 @@
               <div class="sm:col-span-3">
                 <label
                   for="publishers"
-                  class="block text-sm font-medium leading-5"
+                  class="block text-lg font-bold text-timber leading-5"
                 >
                   Publisher(s)
                 </label>
@@ -124,7 +127,7 @@
                     v-model="formData.publishers"
                     name="publishers"
                     rows="2"
-                    class="form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                    class="py-3 px-4 block w-full shadow-sm focus:ring-darkSeaGreen focus:border-darkSeaGreen border-pixie rounded-md"
                   ></textarea>
                 </div>
               </div>
@@ -133,10 +136,10 @@
 
           <div class="mt-8 border-t border-gray-200 pt-8">
             <div>
-              <h3 class="text-lg leading-6 font-medium">
+              <h3 class="text-xl leading-6 font-bold font-body mb-2">
                 Tags
               </h3>
-              <p class="mt-1 text-sm leading-5">
+              <p class="mt-1 text-lg leading-5">
                 Select any demographic/identity descriptors that apply to this
                 work and its creators.
               </p>
@@ -159,10 +162,10 @@
                         class="form-checkbox h-4 w-4 text-timber transition duration-150 ease-in-out"
                       />
                     </div>
-                    <div class="pl-7 text-sm leading-5">
+                    <div class="pl-7 text-lg leading-5">
                       <label
                         :for="`tag-checkbox-${tag.node.name}`"
-                        class="font-medium text-gray-700"
+                        class="text-timber font-medium"
                         >{{ tag.node.name }}
                       </label>
                     </div>
@@ -173,7 +176,7 @@
 
             <div class="mt-8 border-t border-gray-200 pt-8">
               <div>
-                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                <h3 class="text-xl leading-6 font-bold font-body mb-2">
                   Contact
                 </h3>
 
@@ -183,7 +186,7 @@
                   <div class="sm:col-span-3">
                     <label
                       for="email"
-                      class="block text-sm font-medium leading-5 text-gray-700"
+                      class="block text-lg font-medium leading-5 text-timber font-bold"
                     >
                       Email
                     </label>
@@ -192,10 +195,10 @@
                         id="email"
                         v-model="formData.email"
                         name="email"
-                        class="flex-1 form-input block w-full min-w-0 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        class="flex-1 form-input block w-full min-w-0 rounded-md transition duration-150 ease-in-out sm:text-lg sm:leading-5 text-xl py-3 px-4 block w-full shadow-sm focus:ring-darkSeaGreen focus:border-darkSeaGreen border-pixie  rounded-md"
                       />
                     </div>
-                    <p class="mt-2 text-sm text-gray-500">
+                    <p class="mt-2 text-lg text-mongoose">
                       We may follow up if we have any questions.
                     </p>
                   </div>

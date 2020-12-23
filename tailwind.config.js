@@ -7,6 +7,12 @@ module.exports = {
     require("@tailwindcss/typography"),
     require("@tailwindcss/forms"),
   ],
+  variants: {
+    extend: {
+      backgroundColor: ["checked"],
+      borderColor: ["checked"],
+    },
+  },
   theme: {
     extend: {
       colors: {

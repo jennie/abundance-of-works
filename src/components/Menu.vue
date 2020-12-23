@@ -88,7 +88,7 @@
 <style lang="postcss">
 .menu {
   a {
-    @apply text-linen px-3 py-2 rounded-md text-sm font-medium;
+    @apply text-linen px-3 py-2 rounded-md font-medium;
     :hover {
       @apply bg-gray-700 text-linen;
     }
