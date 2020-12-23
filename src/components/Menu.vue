@@ -2,23 +2,23 @@
   <nav class="bg-timber">
     <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
       <div class="relative flex items-center justify-between h-16">
-        <div class="flex items-center px-2 lg:px-0">
-          <!-- <div
-            class="flex-shrink-0 text-mongoose font-display text-medium tracking-wide"
-          >
-            <g-link to="/">Abundance of Works</g-link>
-          </div> -->
-          <div class="hidden lg:block">
-            <div class="flex space-x-4 menu">
+        <div class="hidden lg:flex-1 lg:flex items-center px-2 lg:px-0 w-full">
+          <div class="flex space-x-4 menu justify-between w-full">
+            <div>
               <g-link to="/">Home</g-link>
               <g-link to="/works">Works</g-link>
               <g-link to="/creators">Creators</g-link>
               <g-link to="/years">Years</g-link>
               <g-link to="/tags">Tags</g-link>
             </div>
+            <div>
+              <g-link to="/about">About Abundance</g-link>
+            </div>
           </div>
         </div>
-        <div class="flex-1 flex justify-center px-2 lg:ml-6 lg:justify-end">
+        <div
+          class="flex-1 lg:flex-initial w-full lg:w-auto flex justify-center px-2 lg:ml-6 lg:justify-end"
+        >
           <div class="max-w-lg w-full lg:max-w-xs">
             <label for="search" class="sr-only">Search</label>
             <div class="relative">
@@ -80,6 +80,7 @@
         <g-link to="/creators">Creators</g-link>
         <g-link to="/years">Years</g-link>
         <g-link to="/tags">Tags</g-link>
+        <g-link to="/about">About Abundance</g-link>
       </div>
     </div>
   </nav>
