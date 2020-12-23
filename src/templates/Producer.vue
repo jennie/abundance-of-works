@@ -1,11 +1,11 @@
 <template>
   <Layout>
     <div class="container-inner mx-auto py-16">
-      <div class="border-t-4 border-timber">
-        <div class="mt-2 text-xl font-bold mb-3">
+      <div class="heading">
+        <div class="subhead">
           All works by producer
         </div>
-        <h1 class="text-5xl font-bold leading-tight">
+        <h1>
           {{ $page.producer.name }}
         </h1>
       </div>

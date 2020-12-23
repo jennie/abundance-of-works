@@ -6,7 +6,7 @@
       </h1>
       <div class="flex flex-wrap md:grid md:grid-cols-6 gap-10">
         <div v-for="year in $page.allYear.edges" :key="year.id" class="py-4">
-          <h2 class="text-2xl">
+          <h2 class="text-2xl p-2 md:p-0">
             <g-link :to="year.node.path" class="font-bold underline">{{
               year.node.name
             }}</g-link>

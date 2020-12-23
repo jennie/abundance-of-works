@@ -59,7 +59,7 @@
 
       <section class="bg-pixie text-timber">
         <div class="inner">
-          <div class="border-t-4 border-timber">
+          <div class="heading">
             <p class="mt-2 text-xl font-body font-bold">
               The Abundance of Works is an attempt to document every existing
               Canadian play by equity-seeking playwrights.
@@ -88,7 +88,7 @@
 
       <section class="mt-8">
         <div class="inner">
-          <div class="border-t-4 border-timber">
+          <div class="heading">
             <p class="mt-2 text-xl font-body font-bold">
               Notes on praxis
             </p>

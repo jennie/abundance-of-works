@@ -28,8 +28,8 @@
         <div>
           <div>
             <div>
-              <div class="border-t-4 border-timber">
-                <div class="mt-2 text-xl font-bold mb-3">
+              <div class="heading">
+                <div class="subhead">
                   Submit a work to the database
                 </div>
                 <p class="mt-1 text-lg leading-5">

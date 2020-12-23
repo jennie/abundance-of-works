@@ -60,11 +60,11 @@
         To filter by tags on a work, click one or two above.
       </div>
       <div name="fade" v-else-if="tagSelected.length !== 0">
-        <div class="border-t-4 border-timber">
-          <div class="mt-2 text-xl font-bold mb-3">
+        <div class="heading">
+          <div class="subhead">
             All works tagged
           </div>
-          <h1 class="text-5xl font-bold leading-tight">
+          <h1>
             <span
               v-for="tag in tagSelectedNames"
               class="tagAppend"

@@ -8,8 +8,10 @@
         >
           Living Fire
         </div>
-        <div class="title flex justify-between items-center">
-          <h1 class="text-5xl font-bold leading-tight  align-middle mt-2">
+        <div class="title">
+          <h1
+            class="text-3xl md:text-5xl font-bold leading-tight  align-middle mt-2"
+          >
             {{ $page.work.title }}
             <span
               v-if="$page.work.adaptedFrom"
@@ -27,11 +29,11 @@
             }}</g-link>
           </span>
         </div>
-        <div v-if="$page.work.creators.length > 0" class="creators mt-2">
+        <div v-if="$page.work.creators.length > 0" class="creators mt-2 ">
           <div class="label">
             {{ $page.work.creators.length > 1 ? "Creators" : "Creator" }}
           </div>
-          <span
+          <div
             v-for="creator in $page.work.creators"
             :key="creator.id"
             class="py-1 mr-4 text-2xl"
@@ -39,13 +41,13 @@
             <g-link :to="creator.path" class="underline">
               {{ creator.name }}
             </g-link>
-          </span>
+          </div>
           <span v-if="$page.work.withEnsemble == true" class="text-gray-700"
             >with ensemble</span
           >
         </div>
 
-        <div v-if="$page.work.tags" class="publishers my-6">
+        <div v-if="$page.work.tags.length > 0" class="publishers my-6">
           <div class="label">
             Tags
           </div>
@@ -80,7 +82,7 @@
         <span
           v-for="publisher in $page.work.publishers"
           :key="publisher.id"
-          class="tag bg-blue-200 rounded-full px-2 py-1 mr-4 hover:bg-blue-400 no-underline "
+          class="tag bg-darkLinen rounded-full px-2 py-1 mr-4 hover:bg-mongoose no-underline "
           ><g-link :to="publisher.path"> {{ publisher.name }}</g-link>
         </span>
       </div>
