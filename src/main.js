@@ -36,7 +36,7 @@ export default function(Vue, { router, head, isClient }) {
 
   head.meta.push({
     name: "author",
-    content: "AD HOC Assembly",
+    content: "Ad Hoc Assembly",
   });
   head.link.push({
     rel: "preconnect",

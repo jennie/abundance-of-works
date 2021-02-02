@@ -48,7 +48,7 @@
 
         <div class="mt-8">
           <p class="text-center text-base leading-6 text-mongoose">
-            &copy; 2021 Assembly
+            &copy; 2021 Ad Hoc Assembly
           </p>
         </div>
       </div>
