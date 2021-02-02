@@ -58,6 +58,20 @@
       </main>
 
       <section class="bg-pixie text-timber">
+        <div class="inner flex flex-wrap w-full">
+          <div class="flex-1">
+            <span class="count text-4xl md:text-8xl  block text-center">{{
+              $static.allWork.totalCount
+            }}</span>
+            <span class="text-2xl block text-center">Works</span>
+          </div>
+          <div class="flex-1">
+            <span class="count text-4xl md:text-8xl  block text-center">{{
+              $static.allCreator.totalCount
+            }}</span>
+            <span class="text-2xl block text-center">Creators</span>
+          </div>
+        </div>
         <div class="inner">
           <div class="heading">
             <p class="mt-2 text-xl font-body font-bold">
@@ -115,9 +129,15 @@ section {
     @apply px-8;
   }
   .inner {
-    @apply mx-auto max-w-7xl w-full pt-16 pb-20;
+    @apply mx-auto max-w-7xl w-full pb-20;
+    &:first-child {
+      @apply pt-16;
+    }
     @screen lg {
-      @apply py-40 text-left;
+      @apply pb-40 text-left;
+      &:first-child {
+        @apply pt-40;
+      }
     }
   }
   h4 {
@@ -129,6 +149,9 @@ section {
 <static-query>
 query tags {
   allWork {
+    totalCount
+  }
+  allCreator {
     totalCount
   }
   genderTags: allTagTypes(filter: {name: {eq: "Gender"}}) {
