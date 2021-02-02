@@ -36,11 +36,19 @@
               Submit a Work
             </g-link>
           </div>
+          <div class="px-5 py-2">
+            <a
+              href="mailto:adhocassembly@gmail.com"
+              class="text-base leading-6 hover:underline hover:text-cuttySark underline"
+            >
+              Contact Us
+            </a>
+          </div>
         </nav>
 
         <div class="mt-8">
           <p class="text-center text-base leading-6 text-mongoose">
-            &copy; 2020 AD HOC Collective
+            &copy; 2021 Assembly
           </p>
         </div>
       </div>

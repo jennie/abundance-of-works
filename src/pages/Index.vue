@@ -76,88 +76,11 @@
                 with Indigenous Performing Arts Alliance, Banff Centre for the
                 Arts and the National Arts Centre English Theatre during
                 <a
-                  href="https://www.google.com/url?q=https://nac-cna.ca/en/cycle/indigenous/summit&sa=D&ust=1608565328631000&usg=AOvVaw1W7d1qx871m_GExd012sTi"
+                  href="https://nac-cna.ca/en/cycle/indigenous/summit"
                   target="_blank"
                   >The Summit: Indigenous Theatre</a
                 >.
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="mt-8">
-        <div class="inner">
-          <div class="heading">
-            <p class="mt-2 text-xl font-body font-bold">
-              Notes on praxis
-            </p>
-
-            <div class="md:grid md:grid-cols-3 md:gap-10 flex flex-wrap">
-              <div>
-                <h4>
-                  Identity Designations
-                </h4>
-                <p>
-                  Designations have been sourced from publicly available
-                  self-identification materials wherever possible (e.g. program
-                  bio, artist website, media appearances). Broad cultural
-                  categories are derived from the Canada Council for the Arts’
-                  designated priority groups. We acknowledge the demand for
-                  nuance and further specificity within such designations.
-                  Artists are encouraged to select all categories that pertain
-                  to their holistic identity. [Examples include, but are not
-                  limited to: Indigenous, Asian, African, Latinx, Middle
-                  Eastern, Deaf, disabled.]
-                </p>
-              </div>
-
-              <div>
-                <h4>Gender</h4>
-                <p>
-                  We recognize the fluidity of gender identity and the
-                  complexity of gender presentation. Gender designations have
-                  been sourced from publicly available self-identification
-                  materials wherever possible. These designations are not
-                  static, and should not be considered absolute or
-                  authoritative. They are reflective of the artist’s
-                  self-identification at a mere point in time.
-                </p>
-              </div>
-
-              <div>
-                <h4>Correction</h4>
-                <p>
-                  We welcome and embrace correction. If you are an artist
-                  seeking revision to the way that you or your work are
-                  identified in this database, please do not hesitate to reach
-                  out at
-                  <a href="mailto:adhocassembly@gmail.com"
-                    >adhocassembly@gmail.com</a
-                  >
-                </p>
-              </div>
-
-              <div>
-                <h4>Data/Stats</h4>
-                <p>
-                  These statistics are not scientific; we are not statisticians.
-                  They represent an attempt to quantify and bring visual
-                  perspective to what is gathered.
-                </p>
-              </div>
-
-              <div>
-                <h4>Submissions</h4>
-                <p>
-                  This list is not exhaustive–it will grow as more voices are
-                  added. Use the
-                  <g-link to="/submit">
-                    Submit a Work form
-                  </g-link>
-                  to contribute to our ever-prolific creative community.
-                </p>
-              </div>
             </div>
           </div>
         </div>
