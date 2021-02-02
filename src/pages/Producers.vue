@@ -2,45 +2,56 @@
   <Layout>
     <div class="container-inner mx-auto py-16">
       <h1 class="text-5xl font-bold leading-tight  align-middle mt-2">
-        All Works
+        All Producers
       </h1>
+
       <pagination-posts
         class="py-8"
-        v-if="$page.allWork.pageInfo.totalPages > 1"
-        base="/works"
-        :totalPages="$page.allWork.pageInfo.totalPages"
-        :currentPage="$page.allWork.pageInfo.currentPage"
+        v-if="$page.allProducer.pageInfo.totalPages > 1"
+        base="/producers"
+        :totalPages="$page.allProducer.pageInfo.totalPages"
+        :currentPage="$page.allProducer.pageInfo.currentPage"
       />
       <div class="divide-y divide-darkLinen">
-        <div v-for="work in $page.allWork.edges" :key="work.id">
+        <div v-for="producer in $page.allProducer.edges" :key="producer.id">
           <g-link
-            :to="work.node.path"
+            :to="producer.node.path"
             class="py-4 flex items-baseline flex-wrap justify-start "
           >
             <span
-              class="text-2xl font-display underline font-bold text-left mr-2"
-              >{{ work.node.title }}</span
+              class="text-2xl underline font-display font-bold text-left mr-2"
+              >{{ producer.node.name }}</span
             >
-
             <div class="text-base font-normal">
-              <template v-for="(value, index) in work.node.creators">
+              <template v-for="(value, index) in producer.node.works">
                 <template v-if="index > 0"
                   >,
                 </template>
-                <span :key="index">{{ value.name }}</span>
+                <span :key="index">{{ value.title }}</span>
               </template>
             </div>
           </g-link>
         </div>
       </div>
+
+      <pagination-posts
+        class="pt-8"
+        v-if="$page.allProducer.pageInfo.totalPages > 1"
+        base="/producers"
+        :totalPages="$page.allProducer.pageInfo.totalPages"
+        :currentPage="$page.allProducer.pageInfo.currentPage"
+      />
     </div>
   </Layout>
 </template>
 
 <page-query>
-query Works ($page: Int) {
-
-  allWork(sortBy: "Created", order: DESC, perPage: 20, page: $page) @paginate {
+query ($page: Int) {
+  metadata {
+    siteName
+    siteUrl
+  }
+  allProducer(sortBy: "Created", order: DESC, perPage: 20, page: $page) @paginate {
     totalCount
     pageInfo {
       totalPages
@@ -48,33 +59,18 @@ query Works ($page: Int) {
     }
     edges {
       node {
-        id
+        name
+        created
         path
-        title
-        year {
-          name
+        works(limit: 3) {
+          title
         }
-        tags {
-          name
-        }
-        creators {
-          name
-          type
-        }
-        publishers {
-          name
-        }
-        producers {
-          name
-        }        
       }
     }
   }
 }
-
-
 </page-query>
-<style lang="postcss"></style>
+
 <script>
 import PaginationPosts from "~/components/PaginationPosts";
 
@@ -82,7 +78,6 @@ export default {
   components: {
     PaginationPosts,
   },
-
   metaInfo() {
     return {
       title: "Abundance of Works",

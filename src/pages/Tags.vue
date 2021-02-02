@@ -12,7 +12,7 @@ query ($page: Int) {
     siteName
     siteUrl
   }
-  allTag(sortBy: "name", order: DESC, perPage: 10, page: $page) @paginate {
+  allTag(sortBy: "Name", order: DESC, perPage: 10, page: $page) @paginate {
     totalCount
     pageInfo {
       totalPages

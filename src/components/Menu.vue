@@ -8,6 +8,8 @@
               <g-link to="/">Home</g-link>
               <g-link to="/works">Works</g-link>
               <g-link to="/creators">Creators</g-link>
+              <g-link to="/producers">Producers</g-link>
+              <g-link to="/publishers">Publishers</g-link>
               <g-link to="/years">Years</g-link>
               <g-link to="/tags">Tags</g-link>
             </div>
@@ -78,6 +80,8 @@
         <g-link to="/">Home</g-link>
         <g-link to="/works">Works</g-link>
         <g-link to="/creators">Creators</g-link>
+        <g-link to="/producers">Producers</g-link>
+        <g-link to="/publishers">Publishers</g-link>
         <g-link to="/years">Years</g-link>
         <g-link to="/tags">Tags</g-link>
         <g-link to="/about">About Abundance</g-link>

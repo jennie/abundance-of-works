@@ -227,7 +227,7 @@
 
 <page-query>
 query {
-  tags: allTag(sortBy: "name", order: DESC) {
+  tags: allTag(sortBy: "Name", order: DESC) {
     edges {
       node {
         name

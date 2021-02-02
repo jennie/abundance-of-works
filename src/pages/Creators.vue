@@ -51,7 +51,7 @@ query ($page: Int) {
     siteName
     siteUrl
   }
-  allCreator(sortBy: "name", order: DESC, perPage: 20, page: $page) @paginate {
+  allCreator(sortBy: "Created", order: DESC, perPage: 20, page: $page) @paginate {
     totalCount
     pageInfo {
       totalPages
