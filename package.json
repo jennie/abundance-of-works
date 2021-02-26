@@ -1,5 +1,5 @@
 {
-  "name": "dmg-resources",
+  "name": "abundance-of-works",
   "private": true,
   "scripts": {
     "build": "gridsome build",
@@ -11,13 +11,11 @@
     "@gridsome/plugin-sitemap": "^0.2.3",
     "@gridsome/source-airtable": "^0.2.0",
     "@gridsome/source-filesystem": "^0.6.2",
-    "@gridsome/transformer-remark": "^0.3.4",
-    "@gridsome/vue-remark": "^0.1.10",
+    "@gridsome/transformer-remark": "^0.6.4",
+    "@gridsome/vue-remark": "^0.2.6",
     "@tailwindcss/forms": "^0.2.1",
-    "@tailwindcss/typography": "^0.3.1",
-    "@tailwindcss/ui": "^0.3.1",
-    "autoprefixer": "^10.1.0",
-    "axios": "^0.19.2",
+    "@tailwindcss/typography": "^0.4.0",
+    "axios": "^0.21.1",
     "chart.js": "^2.9.4",
     "fuse.js": "^6.4.3",
     "gridsome": "^0.7.23",
@@ -26,9 +24,8 @@
     "gridsome-plugin-rss": "^1.2.0",
     "lodash.pick": "^4.4.0",
     "luxon": "^1.25.0",
-    "marked": "^1.2.7",
+    "marked": "^2.0.0",
     "minimist": "^0.2.1",
-    "postcss": "^8.2.1",
     "postcss-nested": "^4.2.3",
     "remark-footnotes": "^1.0.0",
     "slugify": "^1.4.6",
@@ -39,6 +36,9 @@
     "vue-scrollto": "^2.20.0"
   },
   "devDependencies": {
-    "tailwindcss": "^2.0.2"
+    "@tailwindcss/postcss7-compat": "^2.0.3",
+    "autoprefixer": "^9.8.6",
+    "postcss": "^7.0.35",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3"
   }
 }
