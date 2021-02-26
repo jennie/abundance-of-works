@@ -2,11 +2,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   purge: ["./src/**/*.vue", "./**/main.js"],
-  plugins: [
-    require("@tailwindcss/ui"),
-    require("@tailwindcss/typography"),
-    require("@tailwindcss/forms"),
-  ],
+  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")],
   variants: {
     extend: {
       backgroundColor: ["checked"],
