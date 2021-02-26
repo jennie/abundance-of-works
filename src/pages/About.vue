@@ -130,18 +130,20 @@
                 Acknowledgments
               </h3>
               <div class="mt-5 prose text-xl">
-                <ul>
+                <ul class="list-none">
                   <li>
-                    <strong>Website &amp; Database Design:</strong> Jennie
-                    Robinson Faber
+                    <strong>Website &amp; Database Design:</strong>
+                    <span class="block flex-nowrap">Jennie Robinson Faber</span>
                   </li>
                   <li>
                     <strong>Abundance Steward &amp; Website Copy:</strong>
-                    Natércia Napoleão
+                    <span class="block flex-nowrap">Natércia Napoleão</span>
                   </li>
                   <li>
-                    <strong>Concept &amp; Coordination:</strong> Donna-Michelle
-                    St. Bernard
+                    <strong>Concept &amp; Coordination:</strong
+                    ><span class="block flex-nowrap">
+                      Donna-Michelle St. Bernard</span
+                    >
                   </li>
                 </ul>
               </div>
