@@ -37,11 +37,12 @@
             </g-link>
           </div>
           <div class="px-5 py-2">
+            Contact us at
             <a
               href="mailto:adhocassembly@gmail.com"
+              target="_blank"
               class="text-base leading-6 hover:underline hover:text-cuttySark underline"
-            >
-              Contact Us
+              >adhocassembly@gmail.com
             </a>
           </div>
         </nav>
