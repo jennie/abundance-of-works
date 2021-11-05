@@ -2,12 +2,6 @@
   <Layout>
     <div class="container-inner mx-auto py-16">
       <div class="">
-        <div
-          v-if="isLivingFire() == true"
-          class="text-red-600 uppercase text-sm tracking-wide font-bold"
-        >
-          Living Fire
-        </div>
         <div class="title">
           <h1
             class="text-3xl md:text-5xl font-bold leading-tight  align-middle mt-2"
@@ -47,7 +41,7 @@
           >
         </div>
 
-        <div v-if="$page.work.tags.length > 0" class="publishers my-6">
+        <!-- <div v-if="$page.work.tags.length > 0" class="publishers my-6">
           <div class="label">
             Tags
           </div>
@@ -60,7 +54,7 @@
               {{ tag.name }}
             </g-link>
           </span>
-        </div>
+        </div> -->
       </div>
 
       <div v-if="$page.work.producers.length > 0" class="producers mt-2">
@@ -118,33 +112,7 @@ query ($id: ID) {
   }
 }
 </page-query>
-<script>
-// TODO: make livingfire check a global component
-export default {
-  data() {
-    return {
-      tagList: [],
-    };
-  },
-  computed: {
-    listTags() {
-      let tagList = [];
-      const tags = this.$page.work.tags;
-      tags.forEach(function(tag) {
-        tagList.push(tag.name);
-      });
-      return tagList;
-    },
-  },
-  methods: {
-    isLivingFire() {
-      if (this.listTags.includes("Indigenous")) {
-        return true;
-      }
-    },
-  },
-};
-</script>
+
 <style lang="postcss">
 main {
   .post-link {

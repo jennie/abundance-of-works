@@ -1,6 +1,12 @@
 <template>
   <Layout>
     <div class="container-inner mx-auto py-16">
+      <div
+        v-if="isLivingFire() == true"
+        class="text-red-600 uppercase text-sm tracking-wide font-bold"
+      >
+        Living Fire
+      </div>
       <div class="heading">
         <div class="subhead">
           All works by creator
@@ -30,6 +36,10 @@
 query ($id: ID) {
   creator(id: $id) {
     name
+    tags {
+      name
+      path
+    }
     works {
       title
       path
@@ -41,6 +51,35 @@ query ($id: ID) {
 }
 
 </page-query>
+<script>
+// TODO: make livingfire check a global component
+export default {
+  data() {
+    return {
+      tagList: [],
+    };
+  },
+  computed: {
+    listTags() {
+      let tagList = [];
+      const tags = this.$page.creator.tags;
+      if (tags) {
+        tags.forEach(function(tag) {
+          tagList.push(tag.name);
+        });
+      }
+      return tagList;
+    },
+  },
+  methods: {
+    isLivingFire() {
+      if (this.listTags.includes("Indigenous")) {
+        return true;
+      }
+    },
+  },
+};
+</script>
 <style lang="postcss">
 main {
   .post-link {
