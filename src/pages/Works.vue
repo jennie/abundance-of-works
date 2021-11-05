@@ -54,9 +54,6 @@ query Works ($page: Int) {
         year {
           name
         }
-        tags {
-          name
-        }
         creators {
           name
           type

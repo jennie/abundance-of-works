@@ -57,12 +57,12 @@
         v-else-if="tagSearchResults.length === 0"
         class="text-center text-2xl mx-auto"
       >
-        To filter by tags on a work, click one or two above.
+        To filter by tags on a creator, click one or two above.
       </div>
       <div name="fade" v-else-if="tagSelected.length !== 0">
         <div class="heading">
           <div class="subhead">
-            All works tagged
+            All creators tagged
           </div>
           <h1>
             <span
@@ -84,14 +84,14 @@
           >
             <span
               class="text-2xl font-display underline font-bold text-left mr-2"
-              >{{ result.item.title }}</span
+              >{{ result.item.name }}</span
             >
             <div class="text-base font-normal">
-              <template v-for="(value, index) in result.item.creators">
+              <template v-for="(value, index) in result.item.works">
                 <template v-if="index > 0"
                   >,
                 </template>
-                <span :key="index">{{ value.name }}</span>
+                <span :key="index">{{ value.title }}</span>
               </template>
             </div>
             <!-- <span
@@ -114,21 +114,23 @@
 </template>
 
 <static-query>
-  query Search {
-    allWork  {
+query Search {
+  allCreator
+     {
       edges {
         node {
           id
           path
-          title
-          creators {
-            name
+          name
+                    works {
+            title
           }
           idFromTags
           tags {
             name
             id
           }
+          
         }
       }
     }
@@ -163,12 +165,14 @@ export default {
 
     pages() {
       let result = [];
-      const allWorks = this.$static.allWork.edges.map((edge) => edge.node);
-      allWorks.forEach((page) => {
+      const allCreators = this.$static.allCreator.edges.map(
+        (edge) => edge.node
+      );
+      allCreators.forEach((page) => {
         result.push({
           path: page.path,
-          title: page.title,
-          creators: page.creators,
+          name: page.name,
+          works: page.works,
           tagIds: page.idFromTags,
           tags: page.tags,
           id: page.id,

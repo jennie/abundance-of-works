@@ -28,10 +28,6 @@ module.exports = {
                 typeName: "Creator",
               },
               {
-                fieldName: "Tags",
-                typeName: "Tag",
-              },
-              {
                 fieldName: "Producers",
                 typeName: "Producer",
               },
@@ -55,6 +51,14 @@ module.exports = {
               {
                 fieldName: "Works",
                 typeName: "Work",
+              },
+              {
+                fieldName: "Tag Types",
+                typeName: "TagTypes",
+              },
+              {
+                fieldName: "Tags",
+                typeName: "Tag",
               },
             ],
           },
@@ -81,16 +85,6 @@ module.exports = {
           {
             name: "Tags",
             typeName: "Tag",
-            links: [
-              {
-                fieldName: "Works",
-                typeName: "Work",
-              },
-              {
-                fieldName: "Tag Types",
-                typeName: "TagTypes",
-              },
-            ],
           },
           {
             name: "Tag Types",

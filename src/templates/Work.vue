@@ -102,10 +102,6 @@ query ($id: ID) {
       name
       path
     }
-    tags {
-      name
-      path
-    }
     creators {
       name
       type
