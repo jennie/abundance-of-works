@@ -8,7 +8,7 @@
       <pagination-posts
         class="py-8"
         v-if="$page.allCreator.pageInfo.totalPages > 1"
-        base="/creators"
+        base="/living-fire"
         :totalPages="$page.allCreator.pageInfo.totalPages"
         :currentPage="$page.allCreator.pageInfo.currentPage"
       />
@@ -37,7 +37,7 @@
       <pagination-posts
         class="pt-8"
         v-if="$page.allCreator.pageInfo.totalPages > 1"
-        base="/creators"
+        base="/living-fire"
         :totalPages="$page.allCreator.pageInfo.totalPages"
         :currentPage="$page.allCreator.pageInfo.currentPage"
       />
