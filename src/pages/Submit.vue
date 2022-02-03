@@ -6,6 +6,7 @@
         class="p-3 text-white bg-green-400 font-bold text-center"
       >
         Thank you for your submission!
+        <g-link to="/submit">Add another?</g-link>
       </div>
 
       <form
