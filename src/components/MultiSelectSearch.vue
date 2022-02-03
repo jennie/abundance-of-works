@@ -115,14 +115,13 @@
 
 <static-query>
 query Search {
-  allCreator
-     {
+  allCreator {
       edges {
         node {
           id
           path
           name
-                    works {
+          works {
             title
           }
           idFromTags
