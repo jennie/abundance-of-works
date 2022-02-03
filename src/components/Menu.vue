@@ -12,6 +12,7 @@
               <g-link to="/publishers">Publishers</g-link>
               <g-link to="/years">Years</g-link>
               <g-link to="/tags">Tags</g-link>
+              <g-link to="/living-fire" class="living-fire">Living Fire</g-link>
             </div>
             <div>
               <g-link to="/about">About Abundance</g-link>
@@ -97,8 +98,14 @@
     :hover {
       @apply bg-gray-700 text-linen;
     }
+    &.living-fire {
+      @apply py-1 px-1 bg-red-600 uppercase text-sm tracking-wide font-bold ml-6 p-0;
+    }
     &.active--exact {
       @apply bg-gray-900 text-linen;
+      &.living-fire {
+        @apply bg-red-700;
+      }
     }
   }
 }
