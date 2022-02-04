@@ -199,6 +199,11 @@ export default {
         responsive: true,
         maintainAspectRatio: false,
       },
+      seo: {
+        title: "Living Fire",
+        description:
+          "Abundance honours past, present, and future creators. We are here. The Abundance of Works is an aggregation of performance works by equity-seeking performing arts creators in Canada.",
+        image: `https://abundanceofworks.ca/images/abundance.png`,
     };
   },
 
@@ -253,16 +258,6 @@ export default {
     },
   },
 
-  data() {
-    return {
-      seo: {
-        title: "Living Fire",
-        description:
-          "Abundance honours past, present, and future creators. We are here. The Abundance of Works is an aggregation of performance works by equity-seeking performing arts creators in Canada.",
-        image: `https://abundanceofworks.ca/images/abundance.png`,
-      },
-    };
-  },
   metaInfo() {
     return {
       title: this.seo.title,

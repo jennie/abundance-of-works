@@ -248,6 +248,11 @@ export default {
       submitted: false,
       formData: {},
       tags: [],
+      seo: {
+        title: "Submit Work to Abundance of Works",
+        description: "Add a work to the database.",
+        image: `https://abundanceofworks.ca/images/abundance.png`,
+      },
     };
   },
   watch: {
@@ -283,15 +288,6 @@ export default {
           console.log("====================================");
         });
     },
-  },
-  data() {
-    return {
-      seo: {
-        title: "Submit Work to Abundance of Works",
-        description: "Add a work to the database.",
-        image: `https://abundanceofworks.ca/images/abundance.png`,
-      },
-    };
   },
   metaInfo() {
     return {
