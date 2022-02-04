@@ -87,6 +87,65 @@ export default {
   data() {
     return {
       isOpen: false,
+      seo: {
+        title: "Abundance of Works",
+        description:
+          "Abundance honours past, present, and future creators. We are here.",
+        image: `https://abundanceofworks.ca/images/abundance.png`,
+      },
+    };
+  },
+  metaInfo() {
+    return {
+      title: this.seo.title,
+      meta: [
+        {
+          key: "title",
+          name: "title",
+          content: this.seo.title,
+        },
+        {
+          key: "description",
+          name: "description",
+          content: this.seo.description,
+        },
+        {
+          key: "twitter:card",
+          name: "twitter:card",
+          content: "summary_large_image",
+        },
+        {
+          key: "twitter:image",
+          name: "twitter:image",
+          content: this.seo.image,
+        },
+        { key: "twitter:site", name: "twitter:site", content: "@jennie" },
+        {
+          key: "twitter:title",
+          name: "twitter:title",
+          content: this.seo.title,
+        },
+        {
+          key: "twitter:description",
+          name: "twitter:description",
+          content: this.seo.description,
+        },
+        {
+          key: "og:title",
+          property: "og:title",
+          content: this.seo.title,
+        },
+        {
+          key: "og:description",
+          property: "og:description",
+          content: this.seo.description,
+        },
+        {
+          key: "og:image",
+          property: "og:image",
+          content: this.seo.image,
+        },
+      ],
     };
   },
   methods: {

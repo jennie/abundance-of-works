@@ -200,7 +200,7 @@ export default {
         maintainAspectRatio: false,
       },
       seo: {
-        title: "Living Fire",
+        title: "Abundance of Works",
         description:
           "Abundance honours past, present, and future creators. We are here. The Abundance of Works is an aggregation of performance works by equity-seeking performing arts creators in Canada.",
         image: `https://abundanceofworks.ca/images/abundance.png`,
