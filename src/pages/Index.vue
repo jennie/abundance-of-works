@@ -253,24 +253,66 @@ export default {
     },
   },
 
+  data() {
+    return {
+      seo: {
+        title: "Living Fire",
+        description:
+          "Abundance honours past, present, and future creators. We are here. The Abundance of Works is an aggregation of performance works by equity-seeking performing arts creators in Canada.",
+        image: `https://abundanceofworks.ca/images/abundance.png`,
+      },
+    };
+  },
   metaInfo() {
     return {
-      title: "Abundance of Works",
+      title: this.seo.title,
       meta: [
-        { key: "title", name: "description", content: "" },
-        { key: "description", name: "description", content: "" },
-        { key: "twitter:card", name: "twitter:card", content: "" },
-        { key: "twitter:image", name: "twitter:image", content: "" },
-        { key: "twitter:site", name: "twitter:site", content: "" },
-        { key: "twitter:title", name: "twitter:title", content: "" },
+        {
+          key: "title",
+          name: "title",
+          content: this.seo.title,
+        },
+        {
+          key: "description",
+          name: "description",
+          content: this.seo.description,
+        },
+        {
+          key: "twitter:card",
+          name: "twitter:card",
+          content: "summary_large_image",
+        },
+        {
+          key: "twitter:image",
+          name: "twitter:image",
+          content: this.seo.image,
+        },
+        { key: "twitter:site", name: "twitter:site", content: "@jennie" },
+        {
+          key: "twitter:title",
+          name: "twitter:title",
+          content: this.seo.title,
+        },
         {
           key: "twitter:description",
           name: "twitter:description",
-          content: "",
+          content: this.seo.description,
         },
-        { key: "og:title", name: "og:title", content: "" },
-        { key: "og:description", name: "og:description", content: "" },
-        { key: "og:image", name: "og:image", content: "" },
+        {
+          key: "og:title",
+          property: "og:title",
+          content: this.seo.title,
+        },
+        {
+          key: "og:description",
+          property: "og:description",
+          content: this.seo.description,
+        },
+        {
+          key: "og:image",
+          property: "og:image",
+          content: this.seo.image,
+        },
       ],
     };
   },
