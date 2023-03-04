@@ -25,7 +25,7 @@
     "lodash.pick": "^4.4.0",
     "luxon": "^1.25.0",
     "marked": "^4.0.10",
-    "minimist": "^0.2.1",
+    "minimist": "^0.2.4",
     "postcss-nested": "^4.2.3",
     "remark-footnotes": "^1.0.0",
     "slugify": "^1.4.6",
