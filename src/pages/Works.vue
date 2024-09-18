@@ -4,28 +4,16 @@
       <h1 class="text-5xl font-bold leading-tight  align-middle mt-2">
         All Works
       </h1>
-      <pagination-posts
-        class="py-8"
-        v-if="$page.allWork.pageInfo.totalPages > 1"
-        base="/works"
-        :totalPages="$page.allWork.pageInfo.totalPages"
-        :currentPage="$page.allWork.pageInfo.currentPage"
-      />
+      <pagination-posts class="py-8" v-if="$page.allWork.pageInfo.totalPages > 1" base="/works"
+        :totalPages="$page.allWork.pageInfo.totalPages" :currentPage="$page.allWork.pageInfo.currentPage" />
       <div class="divide-y divide-darkLinen">
         <div v-for="work in $page.allWork.edges" :key="work.id">
-          <g-link
-            :to="work.node.path"
-            class="py-4 flex items-baseline flex-wrap justify-start "
-          >
-            <span
-              class="text-2xl font-display underline font-bold text-left mr-2"
-              >{{ work.node.title }}</span
-            >
+          <g-link :to="work.node.path" class="py-4 flex items-baseline flex-wrap justify-start ">
+            <span class="text-2xl font-display underline font-bold text-left mr-2">{{ work.node.title }}</span>
 
             <div class="text-base font-normal">
               <template v-for="(value, index) in work.node.creators">
-                <template v-if="index > 0"
-                  >,
+                <template v-if="index > 0">,
                 </template>
                 <span :key="index">{{ value.name }}</span>
               </template>
@@ -33,6 +21,8 @@
           </g-link>
         </div>
       </div>
+      <pagination-posts class="py-8" v-if="$page.allWork.pageInfo.totalPages > 1" base="/works"
+        :totalPages="$page.allWork.pageInfo.totalPages" :currentPage="$page.allWork.pageInfo.currentPage" />
     </div>
   </Layout>
 </template>
