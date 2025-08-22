@@ -34,6 +34,16 @@ export default defineNuxtConfig({
   },
   
   nitro: {
-    preset: 'static'
-  }
+    preset: 'static',
+    prerender: {
+      crawlLinks: true,
+      routes: ['/']
+    }
+  },
+  
+  experimental: {
+    payloadExtraction: false
+  },
+  
+  ssr: true
 })
