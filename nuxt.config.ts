@@ -63,11 +63,11 @@ export default defineNuxtConfig({
     }
   },
   
-  // Full static generation - all pages built at build time
+  // Full static generation - crawl and generate ALL pages
   nitro: {
     preset: 'static',
     prerender: {
-      crawlLinks: true,
+      crawlLinks: true, // Generate every single page at build time
       failOnError: false,
       routes: ['/sitemap.xml']
     }
