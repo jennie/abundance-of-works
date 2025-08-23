@@ -27,7 +27,7 @@
               class="py-4 flex items-baseline flex-wrap justify-start"
             >
               <span class="text-2xl underline font-display font-bold text-left mr-2">
-                {{ creator.field_3946 }}
+                {{ creator[`field_${config.public.baserowCreatorsDisplayNameFieldId}`] }}
               </span>
             </NuxtLink>
           </div>

@@ -86,8 +86,8 @@ const { data: work, pending, error } = await useLazyAsyncData(
 )
 
 useSeoMeta({
-  title: computed(() => work.value ? `${work.value.field_3927} - Abundance of Works` : 'Work - Abundance of Works'),
-  description: computed(() => work.value ? `Details for ${work.value.field_3927}` : 'Work details')
+  title: computed(() => work.value ? `${work.value[`field_${config.public.baserowWorksDisplayTitleFieldId}`]} - Abundance of Works` : 'Work - Abundance of Works'),
+  description: computed(() => work.value ? `Details for ${work.value[`field_${config.public.baserowWorksDisplayTitleFieldId}`]}` : 'Work details')
 })
 </script>
 

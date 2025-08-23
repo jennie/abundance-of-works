@@ -10,19 +10,19 @@
       <div v-else-if="tag">
         <div class="title">
           <h1 class="text-3xl md:text-5xl font-bold leading-tight align-middle mt-2">
-            {{ tag.field_3973 }}
+            {{ tag[`field_${config.public.baserowTagsDisplayNameFieldId}`] }}
           </h1>
-          <span class="font-bold text-xl align-middle" v-if="tag.field_3975?.length > 0">
-            {{ tag.field_3975[0].value }}
+          <span class="font-bold text-xl align-middle" v-if="tag.field_49?.length > 0">
+            {{ tag.field_49[0].value }}
           </span>
         </div>
 
-        <div v-if="tag.field_3976?.length > 0" class="creators mt-2">
+        <div v-if="tag.field_50?.length > 0" class="creators mt-2">
           <div class="label">
-            {{ tag.field_3976.length > 1 ? "Creators" : "Creator" }}
+            {{ tag.field_50.length > 1 ? "Creators" : "Creator" }}
           </div>
           <div
-            v-for="creator in tag.field_3976"
+            v-for="creator in tag.field_50"
             :key="creator.id"
             class="py-1 mr-4 text-2xl"
           >
@@ -50,8 +50,8 @@ const { data: tag, pending, error } = await useLazyAsyncData(
 )
 
 useSeoMeta({
-  title: computed(() => tag.value ? `${tag.value.field_3973} - Abundance of Works` : 'Tag - Abundance of Works'),
-  description: computed(() => tag.value ? `Creators tagged with ${tag.value.field_3973}` : 'Tag details')
+  title: computed(() => tag.value ? `${tag.value[`field_${config.public.baserowTagsDisplayNameFieldId}`]} - Abundance of Works` : 'Tag - Abundance of Works'),
+  description: computed(() => tag.value ? `Creators tagged with ${tag.value[`field_${config.public.baserowTagsDisplayNameFieldId}`]}` : 'Tag details')
 })
 </script>
 

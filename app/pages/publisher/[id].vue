@@ -10,16 +10,16 @@
       <div v-else-if="publisher">
         <div class="title">
           <h1 class="text-3xl md:text-5xl font-bold leading-tight align-middle mt-2">
-            {{ publisher.field_3963 }}
+            {{ publisher[`field_${config.public.baserowPublishersDisplayNameFieldId}`] }}
           </h1>
         </div>
 
-        <div v-if="publisher.field_3966?.length > 0" class="works mt-2">
+        <div v-if="publisher.field_40?.length > 0" class="works mt-2">
           <div class="label">
-            {{ publisher.field_3966.length > 1 ? "Works" : "Work" }}
+            {{ publisher.field_40.length > 1 ? "Works" : "Work" }}
           </div>
           <div
-            v-for="work in publisher.field_3966"
+            v-for="work in publisher.field_40"
             :key="work.id"
             class="py-1 mr-4 text-2xl"
           >
@@ -47,8 +47,8 @@ const { data: publisher, pending, error } = await useLazyAsyncData(
 )
 
 useSeoMeta({
-  title: computed(() => publisher.value ? `${publisher.value.field_3963} - Abundance of Works` : 'Publisher - Abundance of Works'),
-  description: computed(() => publisher.value ? `Details for ${publisher.value.field_3963}` : 'Publisher details')
+  title: computed(() => publisher.value ? `${publisher.value[`field_${config.public.baserowPublishersDisplayNameFieldId}`]} - Abundance of Works` : 'Publisher - Abundance of Works'),
+  description: computed(() => publisher.value ? `Details for ${publisher.value[`field_${config.public.baserowPublishersDisplayNameFieldId}`]}` : 'Publisher details')
 })
 </script>
 

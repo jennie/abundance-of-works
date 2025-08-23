@@ -10,16 +10,16 @@
       <div v-else-if="producer">
         <div class="title">
           <h1 class="text-3xl md:text-5xl font-bold leading-tight align-middle mt-2">
-            {{ producer.field_3956 }}
+            {{ producer[`field_${config.public.baserowProducersDisplayNameFieldId}`] }}
           </h1>
         </div>
 
-        <div v-if="producer.field_3959?.length > 0" class="works mt-2">
+        <div v-if="producer.field_33?.length > 0" class="works mt-2">
           <div class="label">
-            {{ producer.field_3959.length > 1 ? "Works" : "Work" }}
+            {{ producer.field_33.length > 1 ? "Works" : "Work" }}
           </div>
           <div
-            v-for="work in producer.field_3959"
+            v-for="work in producer.field_33"
             :key="work.id"
             class="py-1 mr-4 text-2xl"
           >
@@ -47,8 +47,8 @@ const { data: producer, pending, error } = await useLazyAsyncData(
 )
 
 useSeoMeta({
-  title: computed(() => producer.value ? `${producer.value.field_3956} - Abundance of Works` : 'Producer - Abundance of Works'),
-  description: computed(() => producer.value ? `Details for ${producer.value.field_3956}` : 'Producer details')
+  title: computed(() => producer.value ? `${producer.value[`field_${config.public.baserowProducersDisplayNameFieldId}`]} - Abundance of Works` : 'Producer - Abundance of Works'),
+  description: computed(() => producer.value ? `Details for ${producer.value[`field_${config.public.baserowProducersDisplayNameFieldId}`]}` : 'Producer details')
 })
 </script>
 

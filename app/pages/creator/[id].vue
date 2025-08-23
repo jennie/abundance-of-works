@@ -10,19 +10,19 @@
       <div v-else-if="creator">
         <div class="title">
           <h1 class="text-3xl md:text-5xl font-bold leading-tight align-middle mt-2">
-            {{ creator.field_3946 }}
+            {{ creator[`field_${config.public.baserowCreatorsDisplayNameFieldId}`] }}
           </h1>
-          <span class="font-bold text-xl align-middle" v-if="creator.field_3947?.value">
-            {{ creator.field_3947.value }}
+          <span class="font-bold text-xl align-middle" v-if="creator.field_21?.value">
+            {{ creator.field_21.value }}
           </span>
         </div>
 
-        <div v-if="creator.field_3949?.length > 0" class="works mt-2">
+        <div v-if="creator.field_23?.length > 0" class="works mt-2">
           <div class="label">
-            {{ creator.field_3949.length > 1 ? "Works" : "Work" }}
+            {{ creator.field_23.length > 1 ? "Works" : "Work" }}
           </div>
           <div
-            v-for="work in creator.field_3949"
+            v-for="work in creator.field_23"
             :key="work.id"
             class="py-1 mr-4 text-2xl"
           >
@@ -32,12 +32,12 @@
           </div>
         </div>
 
-        <div v-if="creator.field_3952?.length > 0" class="tags mt-2">
+        <div v-if="creator.field_26?.length > 0" class="tags mt-2">
           <div class="label">
             Tags
           </div>
           <span
-            v-for="tag in creator.field_3952"
+            v-for="tag in creator.field_26"
             :key="tag.id"
             class="tag bg-timber rounded-full px-2 py-1 mr-4 hover:bg-gray-900 no-underline text-linen"
           >
@@ -65,8 +65,8 @@ const { data: creator, pending, error } = await useLazyAsyncData(
 )
 
 useSeoMeta({
-  title: computed(() => creator.value ? `${creator.value.field_3946} - Abundance of Works` : 'Creator - Abundance of Works'),
-  description: computed(() => creator.value ? `Details for ${creator.value.field_3946}` : 'Creator details')
+  title: computed(() => creator.value ? `${creator.value[`field_${config.public.baserowCreatorsDisplayNameFieldId}`]} - Abundance of Works` : 'Creator - Abundance of Works'),
+  description: computed(() => creator.value ? `Details for ${creator.value[`field_${config.public.baserowCreatorsDisplayNameFieldId}`]}` : 'Creator details')
 })
 </script>
 

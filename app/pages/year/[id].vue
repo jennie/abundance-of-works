@@ -10,16 +10,16 @@
       <div v-else-if="year">
         <div class="title">
           <h1 class="text-3xl md:text-5xl font-bold leading-tight align-middle mt-2">
-            {{ year.field_3970 }}
+            {{ year[`field_${config.public.baserowYearsDisplayNameFieldId}`] }}
           </h1>
         </div>
 
-        <div v-if="year.field_3971?.length > 0" class="works mt-2">
+        <div v-if="year.field_45?.length > 0" class="works mt-2">
           <div class="label">
-            {{ year.field_3971.length > 1 ? "Works" : "Work" }}
+            {{ year.field_45.length > 1 ? "Works" : "Work" }}
           </div>
           <div
-            v-for="work in year.field_3971"
+            v-for="work in year.field_45"
             :key="work.id"
             class="py-1 mr-4 text-2xl"
           >
@@ -47,8 +47,8 @@ const { data: year, pending, error } = await useLazyAsyncData(
 )
 
 useSeoMeta({
-  title: computed(() => year.value ? `${year.value.field_3970} - Abundance of Works` : 'Year - Abundance of Works'),
-  description: computed(() => year.value ? `Works from ${year.value.field_3970}` : 'Year details')
+  title: computed(() => year.value ? `${year.value[`field_${config.public.baserowYearsDisplayNameFieldId}`]} - Abundance of Works` : 'Year - Abundance of Works'),
+  description: computed(() => year.value ? `Works from ${year.value[`field_${config.public.baserowYearsDisplayNameFieldId}`]}` : 'Year details')
 })
 </script>
 
