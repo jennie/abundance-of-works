@@ -77,11 +77,12 @@
 
 <script setup>
 const route = useRoute()
+const config = useRuntimeConfig()
 const { fetchRow } = useBaserow()
 
 const { data: work, pending, error } = await useLazyAsyncData(
   `work-${route.params.id}`,
-  () => fetchRow(449, route.params.id)
+  () => fetchRow(config.public.baserowWorksTableId, route.params.id)
 )
 
 useSeoMeta({

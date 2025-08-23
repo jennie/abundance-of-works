@@ -53,6 +53,7 @@
 
 <script setup>
 const route = useRoute()
+const config = useRuntimeConfig()
 const { fetchTable } = useBaserow()
 
 const currentPage = computed(() => parseInt(route.params.page) || 1)
@@ -60,7 +61,7 @@ const perPage = 20
 
 const { data, pending, error } = await useLazyAsyncData(
   `works-page-${currentPage.value}`,
-  () => fetchTable(449, { 
+  () => fetchTable(config.public.baserowWorksTableId, { 
     page: currentPage.value,
     size: perPage 
   })
