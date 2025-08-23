@@ -99,30 +99,19 @@
 const config = useRuntimeConfig();
 const { fetchTable } = useBaserow();
 
-// Fetch statistics
-const stats = ref({
-  worksCount: 0,
-  creatorsCount: 0,
-});
+// Fetch statistics during build time
+const { data: worksData } = await useLazyAsyncData('works-stats', () => 
+  fetchTable(config.public.baserowWorksTableId, { size: 1 })
+);
 
-onMounted(async () => {
-  try {
-    // Fetch works count
-    const worksData = await fetchTable(config.public.baserowWorksTableId, {
-      size: 1,
-    });
-    stats.value.worksCount = worksData.count || 0;
+const { data: creatorsData } = await useLazyAsyncData('creators-stats', () => 
+  fetchTable(config.public.baserowCreatorsTableId, { size: 1 })
+);
 
-    // Fetch creators count
-    const creatorsData = await fetchTable(
-      config.public.baserowCreatorsTableId,
-      { size: 1 }
-    );
-    stats.value.creatorsCount = creatorsData.count || 0;
-  } catch (error) {
-    console.error("Error fetching stats:", error);
-  }
-});
+const stats = computed(() => ({
+  worksCount: worksData.value?.count || 0,
+  creatorsCount: creatorsData.value?.count || 0,
+}));
 
 // SEO
 useSeoMeta({
