@@ -27,7 +27,7 @@
               class="py-4 flex items-baseline flex-wrap justify-start"
             >
               <span class="text-2xl underline font-display font-bold text-left mr-2">
-                {{ tag.field_3973 }}
+                {{ tag[`field_${config.public.baserowTagsDisplayNameFieldId}`] }}
               </span>
             </NuxtLink>
           </div>

@@ -10,26 +10,26 @@
       <div v-else-if="work">
         <div class="title">
           <h1 class="text-3xl md:text-5xl font-bold leading-tight align-middle mt-2">
-            {{ work.field_3927 }}
+            {{ work[`field_${config.public.baserowWorksDisplayTitleFieldId}`] }}
             <span
-              v-if="work.field_3943"
+              v-if="work[`field_${config.public.baserowWorksDisplayAdaptedFromFieldId}`]"
               class="block text-xl text-gray-600 font-normal"
             >
-              adapted from {{ work.field_3943 }}
+              adapted from {{ work[`field_${config.public.baserowWorksDisplayAdaptedFromFieldId}`] }}
             </span>
           </h1>
 
-          <span class="font-bold text-xl align-middle" v-if="work.field_3932">
-            {{ work.field_3932 }}
+          <span class="font-bold text-xl align-middle" v-if="work[`field_${config.public.baserowWorksDisplayImportedYearFieldId}`]">
+            {{ work[`field_${config.public.baserowWorksDisplayImportedYearFieldId}`] }}
           </span>
         </div>
 
-        <div v-if="work.field_3929?.length > 0" class="creators mt-2">
+        <div v-if="work[`field_${config.public.baserowWorksDisplayCreatorsFieldId}`]?.length > 0" class="creators mt-2">
           <div class="label">
-            {{ work.field_3929.length > 1 ? "Creators" : "Creator" }}
+            {{ work[`field_${config.public.baserowWorksDisplayCreatorsFieldId}`].length > 1 ? "Creators" : "Creator" }}
           </div>
           <div
-            v-for="creator in work.field_3929"
+            v-for="creator in work[`field_${config.public.baserowWorksDisplayCreatorsFieldId}`]"
             :key="creator.id"
             class="py-1 mr-4 text-2xl"
           >
@@ -37,17 +37,17 @@
               {{ creator.value }}
             </NuxtLink>
           </div>
-          <span v-if="work.field_3930 === true" class="text-gray-700">
+          <span v-if="work[`field_${config.public.baserowWorksDisplayWithEnsembleFieldId}`] === true" class="text-gray-700">
             with ensemble
           </span>
         </div>
 
-        <div v-if="work.field_3938?.length > 0" class="producers mt-2">
+        <div v-if="work[`field_${config.public.baserowWorksDisplayProducersFieldId}`]?.length > 0" class="producers mt-2">
           <div class="label">
-            {{ work.field_3938.length > 1 ? "Producers" : "Producer" }}
+            {{ work[`field_${config.public.baserowWorksDisplayProducersFieldId}`].length > 1 ? "Producers" : "Producer" }}
           </div>
           <span
-            v-for="producer in work.field_3938"
+            v-for="producer in work[`field_${config.public.baserowWorksDisplayProducersFieldId}`]"
             :key="producer.id"
             class="tag bg-pixie rounded-full px-2 py-1 mr-4 hover:bg-darkSeaGreen no-underline"
           >
@@ -55,12 +55,12 @@
           </span>
         </div>
 
-        <div v-if="work.field_3939?.length > 0" class="publishers mt-2">
+        <div v-if="work[`field_${config.public.baserowWorksDisplayPublishersFieldId}`]?.length > 0" class="publishers mt-2">
           <div class="label">
-            {{ work.field_3939.length > 1 ? "Publishers" : "Publisher" }}
+            {{ work[`field_${config.public.baserowWorksDisplayPublishersFieldId}`].length > 1 ? "Publishers" : "Publisher" }}
           </div>
           <span
-            v-for="publisher in work.field_3939"
+            v-for="publisher in work[`field_${config.public.baserowWorksDisplayPublishersFieldId}`]"
             :key="publisher.id"
             class="tag bg-darkLinen rounded-full px-2 py-1 mr-4 hover:bg-mongoose no-underline"
           >

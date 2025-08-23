@@ -10,9 +10,18 @@
 
       <form
         v-if="!submitted"
-        @submit.prevent="handleSubmit"
+        name="submit-work"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        @submit.prevent="handleSubmit($event)"
         class="space-y-8"
       >
+        <!-- Netlify Forms honeypot field -->
+        <input type="hidden" name="form-name" value="submit-work" />
+        <div style="display: none;">
+          <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+        </div>
         <div>
           <div>
             <div>
@@ -252,37 +261,42 @@ const { data: tagsData, pending: tagsPending } = await useLazyAsyncData('tags', 
   fetchTable(config.public.baserowTagsTableId, { size: 50 })
 )
 
-// Form submission
-const handleSubmit = async () => {
+// Form submission using Netlify Forms
+const handleSubmit = async (event) => {
   submitting.value = true
   error.value = ''
 
   try {
-    // Create the submission payload
-    const submissionData = {
-      ...formData,
-      tags: selectedTags.value.join(', '),
-      submitted_at: new Date().toISOString()
+    // Create form data for Netlify Forms submission
+    const formElement = event.target
+    const formDataToSubmit = new FormData(formElement)
+    
+    // Add selected tags as a comma-separated string
+    if (selectedTags.value.length > 0) {
+      formDataToSubmit.set('tags', selectedTags.value.join(', '))
+    }
+    
+    // Submit to Netlify Forms
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formDataToSubmit).toString()
+    })
+
+    if (response.ok) {
+      submitted.value = true
+      
+      // Reset form
+      Object.keys(formData).forEach(key => {
+        formData[key] = ''
+      })
+      selectedTags.value = []
+    } else {
+      throw new Error('Form submission failed')
     }
 
-    // For now, we'll use a simple email endpoint or external service
-    // In a real implementation, you might want to use a service like Formspree, Netlify Forms, or a custom API
-    
-    const response = await $fetch('/api/submit-work', {
-      method: 'POST',
-      body: submissionData
-    })
-
-    submitted.value = true
-    
-    // Reset form
-    Object.keys(formData).forEach(key => {
-      formData[key] = ''
-    })
-    selectedTags.value = []
-
   } catch (err) {
-    error.value = 'There was an error submitting your form. Please try again or contact us directly.'
+    error.value = 'There was an error submitting your form. Please try again or contact us directly at adhocassembly@gmail.com'
     console.error('Submission error:', err)
   } finally {
     submitting.value = false

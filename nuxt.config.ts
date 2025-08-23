@@ -36,6 +36,20 @@ export default defineNuxtConfig({
       baserowTagsTableId: process.env.BASEROW_TAGS_TABLE_ID,
       baserowTagTypesTableId: process.env.BASEROW_TAG_TYPES_TABLE_ID,
       baserowYearsTableId: process.env.BASEROW_YEARS_TABLE_ID,
+      // Display field IDs for templates
+      baserowWorksDisplayTitleFieldId: process.env.BASEROW_WORKS_DISPLAY_TITLE_FIELD_ID,
+      baserowWorksDisplayCreatorsFieldId: process.env.BASEROW_WORKS_DISPLAY_CREATORS_FIELD_ID,
+      baserowWorksDisplayProducersFieldId: process.env.BASEROW_WORKS_DISPLAY_PRODUCERS_FIELD_ID,
+      baserowWorksDisplayPublishersFieldId: process.env.BASEROW_WORKS_DISPLAY_PUBLISHERS_FIELD_ID,
+      baserowWorksDisplayYearFieldId: process.env.BASEROW_WORKS_DISPLAY_YEAR_FIELD_ID,
+      baserowWorksDisplayAdaptedFromFieldId: process.env.BASEROW_WORKS_DISPLAY_ADAPTED_FROM_FIELD_ID,
+      baserowWorksDisplayWithEnsembleFieldId: process.env.BASEROW_WORKS_DISPLAY_WITH_ENSEMBLE_FIELD_ID,
+      baserowWorksDisplayImportedYearFieldId: process.env.BASEROW_WORKS_DISPLAY_IMPORTED_YEAR_FIELD_ID,
+      baserowCreatorsDisplayNameFieldId: process.env.BASEROW_CREATORS_DISPLAY_NAME_FIELD_ID,
+      baserowProducersDisplayNameFieldId: process.env.BASEROW_PRODUCERS_DISPLAY_NAME_FIELD_ID,
+      baserowPublishersDisplayNameFieldId: process.env.BASEROW_PUBLISHERS_DISPLAY_NAME_FIELD_ID,
+      baserowYearsDisplayNameFieldId: process.env.BASEROW_YEARS_DISPLAY_NAME_FIELD_ID,
+      baserowTagsDisplayNameFieldId: process.env.BASEROW_TAGS_DISPLAY_NAME_FIELD_ID,
     }
   },
   
@@ -49,8 +63,14 @@ export default defineNuxtConfig({
     }
   },
   
+  // Full static generation - all pages built at build time
   nitro: {
-    preset: 'netlify-static'
+    preset: 'static',
+    prerender: {
+      crawlLinks: true,
+      failOnError: false,
+      routes: ['/sitemap.xml']
+    }
   },
   
   ssr: true

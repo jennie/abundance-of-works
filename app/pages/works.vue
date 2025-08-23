@@ -27,10 +27,10 @@
               class="py-4 flex items-baseline flex-wrap justify-start"
             >
               <span class="text-2xl font-display underline font-bold text-left mr-2">
-                {{ work.field_3927 }}
+                {{ work[`field_${config.public.baserowWorksDisplayTitleFieldId}`] }}
               </span>
               <div class="text-base font-normal">
-                <template v-for="(creator, index) in work.field_3929" :key="creator.id">
+                <template v-for="(creator, index) in work[`field_${config.public.baserowWorksDisplayCreatorsFieldId}`]" :key="creator.id">
                   <template v-if="index > 0">, </template>
                   <span>{{ creator.value }}</span>
                 </template>
